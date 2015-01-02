@@ -1,3 +1,4 @@
+
 {
     "name": "symfony/framework-standard-edition",
     "license": "MIT",
@@ -7,9 +8,9 @@
         "psr-0": { "": "src/", "SymfonyStandard": "app/" }
     },
     "require": {
-        "php": ">=5.3.3",
+        "php": ">=5.5.9",
         "symfony/symfony": "2.6.*",
-        "doctrine/orm": "~2.2,>=2.2.3",
+        "doctrine/orm": "~2.2.3",
         "doctrine/doctrine-bundle": "~1.2",
         "twig/extensions": "~1.0",
         "symfony/assetic-bundle": "~2.3",
@@ -17,7 +18,12 @@
         "symfony/monolog-bundle": "~2.4",
         "sensio/distribution-bundle": "~3.0",
         "sensio/framework-extra-bundle": "~3.0",
-        "incenteev/composer-parameter-handler": "~2.0"
+        "incenteev/composer-parameter-handler": "~2.0",
+        "symfony/yaml": "2.7.*@dev",
+        "stof/doctrine-extensions-bundle": "1.2.*@dev",
+        "doctrine/doctrine-fixtures-bundle": "2.2.*",
+        "hautelook/alice-bundle": "dev-master",
+        "symfony/event-dispatcher": "3.0.*@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

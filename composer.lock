@@ -1697,23 +1697,23 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "523475d4f82749d268949ffdecb28ae2115f4dd6"
+                "reference": "3c2b944ceacbfd900c4dcfe992b046d0c5c6d470"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/523475d4f82749d268949ffdecb28ae2115f4dd6",
-                "reference": "523475d4f82749d268949ffdecb28ae2115f4dd6",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/3c2b944ceacbfd900c4dcfe992b046d0c5c6d470",
+                "reference": "3c2b944ceacbfd900c4dcfe992b046d0c5c6d470",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": ">=5.5.9"
             },
             "require-dev": {
                 "psr/log": "~1.0",
-                "symfony/config": "~2.0,>=2.0.5|~3.0.0",
-                "symfony/dependency-injection": "~2.6|~3.0.0",
-                "symfony/expression-language": "~2.6|~3.0.0",
-                "symfony/stopwatch": "~2.3|~3.0.0"
+                "symfony/config": "~2.7|~3.0",
+                "symfony/dependency-injection": "~2.7|~3.0",
+                "symfony/expression-language": "~2.7|~3.0",
+                "symfony/stopwatch": "~2.7|~3.0"
             },
             "suggest": {
                 "symfony/dependency-injection": "",
@@ -1746,7 +1746,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
-            "time": "2014-12-30 09:05:58"
+            "time": "2014-12-30 10:17:11"
         },
         {
             "name": "symfony/monolog-bundle",
@@ -2201,4 +2201,3 @@
     },
     "platform-dev": []
 }
-

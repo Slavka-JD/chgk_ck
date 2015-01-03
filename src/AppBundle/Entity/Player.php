@@ -32,7 +32,7 @@ class Player
     private $name;
 
     /**
-     * @var string
+     * @var /Datetime
      * @ORM\Column(name="age", type="date")
      *
      */
@@ -53,7 +53,6 @@ class Player
     private $type;
 
     /**
-     * @var
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Team", mappedBy="players", cascade={"persist"})
      */

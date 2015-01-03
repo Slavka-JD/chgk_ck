@@ -74,7 +74,6 @@ class Event
     public function __construct()
     {
         $this->comment = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

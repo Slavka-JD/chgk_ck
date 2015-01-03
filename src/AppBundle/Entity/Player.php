@@ -46,6 +46,13 @@ class Player
     private $email;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255)
+     */
+    private $type;
+
+    /**
      * @var
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Team", mappedBy="players", cascade={"persist"})
@@ -124,19 +131,42 @@ class Player
     }
 
     /**
-     * Set Team
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return Player
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+    /**
+     *Set team
      * @param Team $team
      * @return Player
      */
     public function setTeam(Team $team)
     {
+        $team->setPlayer($this);
         $this->teams[] = $team;
     }
 
     /**
      * Get teams
      *
-     * @return array
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getTeams()
     {

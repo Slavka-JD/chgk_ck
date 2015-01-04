@@ -1929,12 +1929,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "7918f04ec3f38d2069b91b2d2e0e3a10d9cfc6c4"
+                "reference": "59180ea818b1fe87de344d979240dd422e2d7892"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/7918f04ec3f38d2069b91b2d2e0e3a10d9cfc6c4",
-                "reference": "7918f04ec3f38d2069b91b2d2e0e3a10d9cfc6c4",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/59180ea818b1fe87de344d979240dd422e2d7892",
+                "reference": "59180ea818b1fe87de344d979240dd422e2d7892",
                 "shasum": ""
             },
             "require": {
@@ -1967,7 +1967,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2014-12-30 09:05:46"
+            "time": "2015-01-03 15:46:01"
         },
         {
             "name": "twig/extensions",

@@ -1,0 +1,7 @@
+navbar:
+    navbar_brand: "Добро пожаловать в Черкасский клуб Интеллектуальных игр!"
+    navbar_homepage: "Главная"
+    navbar_teams: "Команды"
+    navbar_tournaments: "Турниры"
+    navbar_events: "Новости"
+    navbar_contacts: "Контакты"

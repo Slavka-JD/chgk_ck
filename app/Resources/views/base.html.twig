@@ -2,7 +2,6 @@
 <html lang="en">
 {% trans_default_domain "messages" %}
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,64 +16,52 @@
 <div class="container">
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="navbar-header">
-                    <span class="navbar-brand">
-                        <a class="navbar-brand"> {{ "navbar.navbar_brand"|trans() }}</a>
-                    </span>
+            <a class="navbar-brand"> {{ "navbar.navbar_brand"|trans() }}</a>
         </div>
         <ul class="nav navbar-nav">
             <li>
-                <a href="">
-                    <div>
-                        <a class="navbar-brand"> {{ "navbar.navbar_homepage"|trans() }}</a>
-                    </div>
-                </a>
+                <div>
+                    <a class="navbar-brand"> {{ "navbar.navbar_homepage"|trans() }}</a>
+                </div>
             </li>
 
             <li>
-                <a href="">
-                    <div>
-                        <a class="navbar-brand"> {{ "navbar.navbar_teams"|trans() }}</a>
-                    </div>
-                </a>
+                <div>
+                    <a class="navbar-brand"> {{ "navbar.navbar_teams"|trans() }}</a>
+                </div>
             </li>
 
             <li>
-                <a href="">
-                    <div>
-                        <a class="navbar-brand"> {{ "navbar.navbar_tournaments"|trans() }}</a>
-                    </div>
-                </a>
+                <div>
+                    <a class="navbar-brand"> {{ "navbar.navbar_tournaments"|trans() }}</a>
+                </div>
             </li>
 
             <li>
-                <a href="">
-                    <div>
-                        <a class="navbar-brand"> {{ "navbar.navbar_events"|trans() }}</a>
-                    </div>
-                </a>
+                <div>
+                    <a class="navbar-brand"> {{ "navbar.navbar_events"|trans() }}</a>
+                </div>
             </li>
 
             <li>
-                <a href="">
-                    <div>
-                        <a class="navbar-brand"> {{ "navbar.navbar_contacts"|trans() }}</a>
-                    </div>
-                </a>
+                <div>
+                    <a class="navbar-brand" href=""> {{ "navbar.navbar_contacts"|trans() }}</a>
+                </div>
             </li>
 
             <li>
-                <div class="btn-group" role="group" aria-label="Select language">
-                    <button type="button" class="btn btn-default">
-                        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">{{ "lang.english"|trans() }}</a>
+                <div style="margin-top: -7px;" class="btn-group navbar-brand" role="group" aria-label="Select language">
+                    <button type="button" class="btn btn-inverse">
+                        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">en</a>
                     </button>
-                    <button type="button" class="btn btn-default">
-                        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'ru'})) }}">{{ "lang.russian"|trans() }}</a>
+                    <button type="button" class="btn btn-inverse">
+                        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'ru'})) }}">ru</a>
                     </button>
-                    <button type="button" class="btn btn-default">
-                        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'ua'})) }}">{{ "lang.ukrainian"|trans() }}</a>
+                    <button type="button" class="btn btn-inverse">
+                        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'ua'})) }}">ua</a>
                     </button>
-                    <button type="button" class="btn btn-default">
-                        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'de'})) }}">{{ "lang.german"|trans() }}</a>
+                    <button type="button" class="btn btn-inverse">
+                        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'de'})) }}">de</a>
                     </button>
                 </div>
             </li>

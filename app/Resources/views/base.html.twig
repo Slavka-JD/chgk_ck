@@ -51,13 +51,13 @@
 
             <li>
                 <div style="margin-top: -7px;" class="btn-group navbar-brand" role="group" aria-label="Select language">
-                    <button type="button" class="btn btn-inverse">
+                    <button type="button" class="btn btn-default">
                         <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">en</a>
                     </button>
-                    <button type="button" class="btn btn-inverse">
+                    <button type="button" class="btn btn-default">
                         <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'ru'})) }}">ru</a>
                     </button>
-                    <button type="button" class="btn btn-inverse">
+                    <button type="button" class="btn btn-default">
                         <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'ua'})) }}">ua</a>
                     </button>
                 </div>

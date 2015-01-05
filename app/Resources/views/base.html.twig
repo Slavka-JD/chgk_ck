@@ -1,13 +1,71 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="en">
+{% trans_default_domain "messages" %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}{{ "navbar.navbar_name"|trans() }}{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}"/>
+</head>
+
+<body>
+
+<div class="container">
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand"> {{ "navbar.navbar_brand"|trans() }}</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li>
+                <div>
+                    <a class="navbar-brand"> {{ "navbar.navbar_homepage"|trans() }}</a>
+                </div>
+            </li>
+
+            <li>
+                <div>
+                    <a class="navbar-brand"> {{ "navbar.navbar_teams"|trans() }}</a>
+                </div>
+            </li>
+
+            <li>
+                <div>
+                    <a class="navbar-brand"> {{ "navbar.navbar_tournaments"|trans() }}</a>
+                </div>
+            </li>
+
+            <li>
+                <div>
+                    <a class="navbar-brand"> {{ "navbar.navbar_events"|trans() }}</a>
+                </div>
+            </li>
+
+            <li>
+                <div>
+                    <a class="navbar-brand" href=""> {{ "navbar.navbar_contacts"|trans() }}</a>
+                </div>
+            </li>
+
+            <li>
+                <div style="margin-top: -7px;" class="btn-group navbar-brand" role="group" aria-label="Select language">
+                    <button type="button" class="btn btn-inverse">
+                        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">en</a>
+                    </button>
+                    <button type="button" class="btn btn-inverse">
+                        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'ru'})) }}">ru</a>
+                    </button>
+                    <button type="button" class="btn btn-inverse">
+                        <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'ua'})) }}">ua</a>
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    {% block content %}{% endblock %}
+</div>
+{% block javascripts %}{% endblock %}</body>
+
 </html>

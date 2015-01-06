@@ -5,3 +5,11 @@ services:
             arguments: ["%kernel.default_locale%"]
             tags:
                 - { name: kernel.event_subscriber }
+
+    requesthandler:
+            class:     AppBundle\Services\MailerHandler
+            arguments: ["@mailer"]
+
+    requesthandler:
+            class:     AppBundle\Services\RequestHandler
+            arguments: ["@request_stack"]

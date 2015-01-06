@@ -15,7 +15,7 @@ framework:
     validation:      { enable_annotations: true }
     templating:
         engines: ['twig']
-        #assets_version: SomeVersionScheme
+        assets_version: SomeVersionScheme
     default_locale:  "%locale%"
     trusted_hosts:   ~
     trusted_proxies: ~
@@ -82,4 +82,4 @@ swiftmailer:
      host:       smtp.gmail.com
      username:   myroslavazel
      password:   ladymacbeth1990
-     disable_delivery: true
+     disable_delivery: false

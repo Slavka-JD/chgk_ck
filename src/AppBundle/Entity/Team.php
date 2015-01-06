@@ -80,7 +80,7 @@ class Team
      */
     public function __construct()
     {
-        $this->players = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->teams = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -182,20 +182,19 @@ class Team
     }
 
     /**
-     *Set player
+     * Set Player
      * @param Player $player
      * @return Team
      */
     public function setPlayer(Player $player)
     {
-        $player->setTeam($this);
         $this->players[] = $player;
     }
 
     /**
      * Get players
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return array
      */
     public function getPlayers()
     {

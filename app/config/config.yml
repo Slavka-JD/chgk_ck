@@ -82,4 +82,4 @@ swiftmailer:
      host:       smtp.gmail.com
      username:   myroslavazel
      password:   ladymacbeth1990
-     disable_delivery: true
+     disable_delivery: false

@@ -18,7 +18,7 @@ class Mailer
             ->setTo($to)
             ->setBody($letter);
 
-        $this->get('mailer')->send($message);
+        $this->$mailer->send($message);
 
         return $this->render('default/index.html.twig');
     }

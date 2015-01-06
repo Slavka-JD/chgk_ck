@@ -21,8 +21,8 @@
         "symfony/yaml": "2.7.*@dev",
         "stof/doctrine-extensions-bundle": "1.2.*@dev",
         "doctrine/doctrine-fixtures-bundle": "2.2.*",
-        "hautelook/alice-bundle": "dev-master",
-        "symfony/event-dispatcher": "3.0.*@dev",
+        "hautelook/alice-bundle": "~0.2",
+        "symfony/event-dispatcher": "2.6*@dev",
         "friendsofsymfony/rest-bundle": "~1.4",
         "jms/serializer-bundle": "0.13.*"
     },

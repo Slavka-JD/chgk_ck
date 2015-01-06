@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a68dde645dc409f6ac76c365e84b6616",
+    "hash": "974383ae19f0937f2d5264b101e29b75",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1041,16 +1041,16 @@
         },
         {
             "name": "hautelook/alice-bundle",
-            "version": "dev-master",
+            "version": "0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hautelook/AliceBundle.git",
-                "reference": "c8b4fb387e9e0ba53055f4187b81efa4a66bce75"
+                "reference": "44824200e88cdec9b9f8ee5056c4a197299e5293"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hautelook/AliceBundle/zipball/c8b4fb387e9e0ba53055f4187b81efa4a66bce75",
-                "reference": "c8b4fb387e9e0ba53055f4187b81efa4a66bce75",
+                "url": "https://api.github.com/repos/hautelook/AliceBundle/zipball/44824200e88cdec9b9f8ee5056c4a197299e5293",
+                "reference": "44824200e88cdec9b9f8ee5056c4a197299e5293",
                 "shasum": ""
             },
             "require": {
@@ -1095,7 +1095,7 @@
                 "alice",
                 "orm"
             ],
-            "time": "2014-10-29 05:43:59"
+            "time": "2014-10-19 05:10:40"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -2687,7 +2687,6 @@
     "stability-flags": {
         "symfony/yaml": 20,
         "stof/doctrine-extensions-bundle": 20,
-        "hautelook/alice-bundle": 20,
         "symfony/event-dispatcher": 20
     },
     "prefer-stable": false,

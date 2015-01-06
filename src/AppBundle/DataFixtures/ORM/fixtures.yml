@@ -1,7 +1,7 @@
 AppBundle\Entity\Player:
   players{1..18}:
     name:  <playerName()>
-    age: <date()>
+    age: <dateTime()>
     email: <email()>
     type: <playerTypeName()>
     team: @teams*
@@ -15,4 +15,4 @@ AppBundle\Entity\Team:
     description: <realText()>
     rating: <numberBetween(0, 20000)>
     totalPlayers: <numberBetween(1, 20)>
-    player: 6x @players*
+    player: @players*

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8b3088c2f778594cc66ca56588a5ea65",
+    "hash": "17a083ff5177c7d1e97f099608100163",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1041,16 +1041,16 @@
         },
         {
             "name": "hautelook/alice-bundle",
-            "version": "dev-master",
+            "version": "0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hautelook/AliceBundle.git",
-                "reference": "c8b4fb387e9e0ba53055f4187b81efa4a66bce75"
+                "reference": "44824200e88cdec9b9f8ee5056c4a197299e5293"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hautelook/AliceBundle/zipball/c8b4fb387e9e0ba53055f4187b81efa4a66bce75",
-                "reference": "c8b4fb387e9e0ba53055f4187b81efa4a66bce75",
+                "url": "https://api.github.com/repos/hautelook/AliceBundle/zipball/44824200e88cdec9b9f8ee5056c4a197299e5293",
+                "reference": "44824200e88cdec9b9f8ee5056c4a197299e5293",
                 "shasum": ""
             },
             "require": {
@@ -1095,7 +1095,7 @@
                 "alice",
                 "orm"
             ],
-            "time": "2014-10-29 05:43:59"
+            "time": "2014-10-19 05:10:40"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -2098,28 +2098,28 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "dev-master",
+            "version": "2.7.x-dev",
             "target-dir": "Symfony/Component/EventDispatcher",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "008a8f34bacbde8834ae8353f0ff20eb671e5a0e"
+                "reference": "f812eb83d21f4d8ab2ab67262590c508905922ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/008a8f34bacbde8834ae8353f0ff20eb671e5a0e",
-                "reference": "008a8f34bacbde8834ae8353f0ff20eb671e5a0e",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/f812eb83d21f4d8ab2ab67262590c508905922ee",
+                "reference": "f812eb83d21f4d8ab2ab67262590c508905922ee",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9"
+                "php": ">=5.3.3"
             },
             "require-dev": {
                 "psr/log": "~1.0",
-                "symfony/config": "~2.7|~3.0",
-                "symfony/dependency-injection": "~2.7|~3.0",
-                "symfony/expression-language": "~2.7|~3.0",
-                "symfony/stopwatch": "~2.7|~3.0"
+                "symfony/config": "~2.0,>=2.0.5|~3.0.0",
+                "symfony/dependency-injection": "~2.6|~3.0.0",
+                "symfony/expression-language": "~2.6|~3.0.0",
+                "symfony/stopwatch": "~2.3|~3.0.0"
             },
             "suggest": {
                 "symfony/dependency-injection": "",
@@ -2128,7 +2128,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "2.7-dev"
                 }
             },
             "autoload": {
@@ -2152,7 +2152,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
-            "time": "2015-01-05 14:34:32"
+            "time": "2015-01-05 15:02:26"
         },
         {
             "name": "symfony/monolog-bundle",
@@ -2687,13 +2687,12 @@
     "stability-flags": {
         "symfony/yaml": 20,
         "stof/doctrine-extensions-bundle": 20,
-        "hautelook/alice-bundle": 20,
         "symfony/event-dispatcher": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.5.9"
+        "php": ">=5.3.2"
     },
     "platform-dev": []
 }

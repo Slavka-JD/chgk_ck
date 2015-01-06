@@ -1,0 +1,18 @@
+AppBundle\Entity\Player:
+  players{1..18}:
+    name:  <playerName()>
+    age: <dateTime()>
+    email: <email()>
+    type: <playerTypeName()>
+    team: @teams*
+    created: <dateTime()>
+    deletedAt: <dateTime()>
+
+AppBundle\Entity\Team:
+  teams{1..9}:
+    name (unique): <teamName()>
+    type: <teamTypeName()>
+    description: <realText()>
+    rating: <numberBetween(0, 20000)>
+    totalPlayers: <numberBetween(1, 20)>
+    player: @players*

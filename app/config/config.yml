@@ -66,6 +66,14 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
 
+#alice faker configuration
+hautelook_alice:
+    locale: en_US   # default
+    seed: 1         # default
+#    do_flush: true                              # default
+#    schema_tool: null                           # default
+#    doctrine: orm                               # default
+
 stof_doctrine_extensions:
     default_locale: en
     orm:

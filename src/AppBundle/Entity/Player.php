@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Entity\Team;
 
 /**
  * Player
@@ -41,7 +42,7 @@ class Player
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
     private $email;
 
@@ -72,7 +73,7 @@ class Player
      */
     public function __construct()
     {
-        $this->teams = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->players = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

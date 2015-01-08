@@ -27,7 +27,7 @@ class Result
     /**
      * @var
      * @Assert\NotBlank()
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Tournament", mappedBy="result", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Tournament", inversedBy="result", cascade={"persist"})
      */
     private $tournament;
 
@@ -42,7 +42,7 @@ class Result
      * @var integer
      * @Assert\NotBlank()
      * @Assert\Length(min = 0, max = 45)
-     * @ORM\Column(name="number", type="integer")
+     * @ORM\Column(name="points", type="integer")
      */
     private $points;
 
@@ -50,7 +50,7 @@ class Result
      * @var integer
      * @Assert\NotBlank()
      * @Assert\Length(min = 1, max = 20)
-     * @ORM\Column(name="number", type="integer")
+     * @ORM\Column(name="place", type="integer")
      */
     private $place;
 

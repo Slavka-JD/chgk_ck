@@ -6,7 +6,7 @@ services:
             tags:
                 - { name: kernel.event_subscriber }
 
-    requesthandler:
+    mailerhandler:
             class:     AppBundle\Services\MailerHandler
             arguments: ["@mailer"]
 

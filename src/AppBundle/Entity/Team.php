@@ -76,8 +76,9 @@ class Team
     private $players;
 
     /**
-     * @OneToOne(targetEntity="AppBundle\Entity\Result", inversedBy="team")
-     * @JoinColumn(name="result_id", referencedColumnName="id")
+     * @var
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Result", mappedBy="team", cascade={"persist"})
+     *
      **/
     private $result;
 

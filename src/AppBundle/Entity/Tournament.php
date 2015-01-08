@@ -60,18 +60,11 @@ class Tournament
     private $results;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="total", type="integer")
-     */
-    private $totalteams;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->teams = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->results = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -178,28 +171,6 @@ class Tournament
     }
 
     /**
-     * Get totalteams
-     *
-     * @return integer
-     */
-    public function getTotalteams()
-    {
-        return $this->totalteams;
-    }
-
-    /**
-     * Set totalteams
-     *
-     * @param integer $totalteams
-     * @return Tournament
-     */
-    public function setTotalteams($totalteams)
-    {
-        $this->totalteams = $totalteams;
-        return $this;
-    }
-
-    /**
      * Set Result
      * @param Result $result
      * @return Tournament
@@ -217,5 +188,15 @@ class Tournament
     public function getResults()
     {
         return $this->results;
+    }
+
+    public function addResult(Result $result)
+    {
+        $this->results->add($result);
+    }
+
+    public function removeResult(Result $result)
+    {
+        $this->results->remove($result);
     }
 }

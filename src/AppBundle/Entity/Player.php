@@ -56,7 +56,7 @@ class Player
     /**
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Team", mappedBy="players", cascade={"persist"})
-     * @JoinTable(name="players_teams")
+     *
      */
     private $teams;
     /**

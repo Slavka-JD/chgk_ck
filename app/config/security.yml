@@ -17,9 +17,9 @@ security:
              pattern: ^/(_(profiler|wdt)|css|images|js)/
              security: false
 
-        default:
-            anonymous: ~
-            http_basic: ~
+         default:
+             anonymous: ~
+             http_basic: ~
 
     access_control:
             # require ROLE_ADMIN for /admin*

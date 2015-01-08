@@ -7,12 +7,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use AppBundle\Form\Type\TournamentType;
-use AppBundle\Entity\Tournament;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template as Template;
+use AppBundle\Form\Type\PlayerType;
 use AppBundle\Entity\Player;
 
-
-class TournamentController extends Controller
+class PlayerController extends Controller
 {
     /**
      * @Template()
@@ -27,23 +26,15 @@ class TournamentController extends Controller
         $locale = $request->getLocale();
 
         $em = $this->getDoctrine()->getManager();
-        $tournament = new Tournament();
-        $form = $this->createForm(new TournamentType(), $tournament);
+        $player = new Player();
+        $form = $this->createForm(new PlayerType(), $player);
         $form->handleRequest($request);
         if ($form->isValid()) {
-            $tournament = $form->getData();
-            $em->persist($tournament);
+            $player = $form->getData();
+            $em->persist($player);
             $em->flush();
 
-            //sending email to players
-            $player = new Player();
-            $this->get('mailerhandler')->Send(
-                'Письмо для' . $player->getEmail() . 'с результатами турнира',
-                'myroslavazel@gmail.com',
-                $player->getEmail(),
-                $player->getLetter());
-
-            return $this->redirect($this->generateUrl('tournament', array(
+            return $this->redirect($this->generateUrl('player', array(
                 'form' => $form->createView())));
         }
 
@@ -51,17 +42,22 @@ class TournamentController extends Controller
             throw new AccessDeniedException();
         }
 
-        return $this->render('default/tournament.html.twig', array(
+        return $this->render('default/player.html.twig', array(
             'form' => $form->createView(),
         ));
     }
 
-    public function deleteTournamentAction($slug)
+    /**
+     * @Route("/admin")
+     * @param $slug
+     * @return \Symfony\Component\HttpFoundation\Response|static
+     */
+    public function deletePlayerAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
-        $tournament = $em->getRepository('AppBundle:Tournament')->findOneBy(['slugTournament' => $slug]);
+        $player = $em->getRepository('AppBundle:Player')->findOneBy(['slugPlayer' => $slug]);
         $this->get('request_handler');
-        $em->remove($tournament);
+        $em->remove($player);
         $em->flush();
         return JsonResponse::create(["code" => 200]);
     }

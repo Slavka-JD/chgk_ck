@@ -1,9 +1,9 @@
 <?php
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use AppBundle\Form\Type\TournamentType;
@@ -14,19 +14,21 @@ use AppBundle\Entity\Player;
 class TournamentController extends Controller
 {
     /**
-     * @Route("/addtournament", name="tournament")
+     * @Template()
+     *
+     * @param Request $request
+     * @return array
+     *
      */
 
-    public function newAction(Request $request)
+    public function indexAction(Request $request)
     {
         $locale = $request->getLocale();
 
         $em = $this->getDoctrine()->getManager();
         $tournament = new Tournament();
         $form = $this->createForm(new TournamentType(), $tournament);
-
         $form->handleRequest($request);
-
         if ($form->isValid()) {
             $tournament = $form->getData();
             $em->persist($tournament);

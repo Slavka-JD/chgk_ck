@@ -75,6 +75,17 @@ class LoadTeamPlayerData extends DataFixtureLoader
         return $names[array_rand($names)];
     }
 
+    public function tournamentName()
+    {
+        $names = array(
+            'Кубок сирых и убогих',
+            'Выездной Кубок /"Сами вы сирые и убогие/"',
+            'Турнир имени Никиты Джигурды',
+        );
+
+        return $names[array_rand($names)];
+    }
+
     protected function getFixtures()
     {
         return array(

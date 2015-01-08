@@ -6,7 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
-use AppBundle\Entity\Player;
 
 /**
  * Team
@@ -65,7 +64,7 @@ class Team
     /**
      * @var integer
      *
-     * @ORM\Column(name="totalclasses", type="integer")
+     * @ORM\Column(name="totalplayers", type="integer")
      */
     private $totalplayers;
 
@@ -75,6 +74,13 @@ class Team
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Player", mappedBy="teams", cascade={"persist"})
      */
     private $players;
+
+    /**
+     * @var
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Result", mappedBy="team", cascade={"persist"})
+     *
+     **/
+    private $result;
 
     /**
      * Constructor
@@ -248,6 +254,27 @@ class Team
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * Get result
+     *
+     * @return Result
+     */
+    public function getResult()
+    {
+        return $this->result;
+    }
+
+    /**
+     * Set Result
+     * @param Result $result
+     * @return Team
+     */
+    public function setResult(Result $result = null)
+    {
+        $this->result = $result;
         return $this;
     }
 }

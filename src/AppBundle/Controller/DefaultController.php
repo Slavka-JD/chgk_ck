@@ -12,6 +12,7 @@ class DefaultController extends Controller
     /**
      * @Route("/", name="homepage")
      */
+
     public function indexAction(Request $request)
     {
         $locale = $request->getLocale();

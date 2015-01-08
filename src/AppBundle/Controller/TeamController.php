@@ -6,13 +6,12 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\FormBuilderInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template as Template;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use AppBundle\Form\Type\TournamentType;
-use AppBundle\Entity\Tournament;
-use AppBundle\Entity\Player;
+use AppBundle\Form\Type\TeamType;
+use AppBundle\Entity\Team;
 
-
-class TournamentController extends Controller
+class TeamController extends Controller
 {
     /**
      * @Template()
@@ -27,23 +26,15 @@ class TournamentController extends Controller
         $locale = $request->getLocale();
 
         $em = $this->getDoctrine()->getManager();
-        $tournament = new Tournament();
-        $form = $this->createForm(new TournamentType(), $tournament);
+        $team = new Team();
+        $form = $this->createForm(new TeamType(), $team);
         $form->handleRequest($request);
         if ($form->isValid()) {
-            $tournament = $form->getData();
-            $em->persist($tournament);
+            $team = $form->getData();
+            $em->persist($team);
             $em->flush();
 
-            //sending email to players
-            $player = new Player();
-            $this->get('mailerhandler')->Send(
-                'Письмо для' . $player->getEmail() . 'с результатами турнира',
-                'myroslavazel@gmail.com',
-                $player->getEmail(),
-                $player->getLetter());
-
-            return $this->redirect($this->generateUrl('tournament', array(
+            return $this->redirect($this->generateUrl('team', array(
                 'form' => $form->createView())));
         }
 
@@ -51,17 +42,22 @@ class TournamentController extends Controller
             throw new AccessDeniedException();
         }
 
-        return $this->render('default/tournament.html.twig', array(
+        return $this->render('default/team.html.twig', array(
             'form' => $form->createView(),
         ));
     }
 
-    public function deleteTournamentAction($slug)
+    /**
+     * @Route("/admin")
+     * @param $slug
+     * @return \Symfony\Component\HttpFoundation\Response|static
+     */
+    public function deleteTeamAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
-        $tournament = $em->getRepository('AppBundle:Tournament')->findOneBy(['slugTournament' => $slug]);
+        $team = $em->getRepository('AppBundle:Team')->findOneBy(['slugTeam' => $slug]);
         $this->get('request_handler');
-        $em->remove($tournament);
+        $em->remove($team);
         $em->flush();
         return JsonResponse::create(["code" => 200]);
     }

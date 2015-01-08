@@ -8,13 +8,6 @@ use AppBundle\Entity\Team;
 
 class PlayerType extends AbstractType
 {
-    public $teams;
-
-    public function __construct(array $teams)
-    {
-        $this->teams = $teams;
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name', 'text', array(

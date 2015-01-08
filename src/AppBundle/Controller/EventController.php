@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template as Template;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use AppBundle\Form\Type\EventType;
 use AppBundle\Entity\Event;
 use AppBundle\Form\Type\CommentType;
@@ -32,6 +33,10 @@ class EventController extends Controller
             return array($this->redirect($this->generateUrl('event', array(
                 'form' => $form->createView()))));
         }
+
+        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+            throw new AccessDeniedException();
+        }
     }
 
     /**
@@ -53,6 +58,7 @@ class EventController extends Controller
     /**
      * @param $slug
      * @return \Symfony\Component\HttpFoundation\Response|static
+     *
      */
     public function deleteEventAction($slug)
     {

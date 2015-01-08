@@ -9,15 +9,22 @@ class TournamentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name');
-        $builder->add('description');
-        $builder->add('playdate');
+        $builder->add('name', array(
+            'label' => 'tournament.tournament_name'
+        ));
+        $builder->add('description', array(
+            'label' => 'tournament.tournament_description'
+        ));
+        $builder->add('playdate', array(
+            'label' => 'tournament.tournament_playdate'
+        ));
 
         $builder->add('results', 'collection', array(
             'type' => new ResultType(),
             'allow_add' => true,
             'by_reference' => false,
             'allow_delete' => true,
+            'label' => 'tournament.tournament_results'
         ));
     }
 

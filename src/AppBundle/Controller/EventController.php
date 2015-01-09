@@ -42,17 +42,12 @@ class EventController extends Controller
     /**
      * @Template()
      *
-     * @param $slug
-     * @return array
      */
-    public function viewAction($slug)
+    public function viewAction()
     {
-        $event = $this->getDoctrine()->getRepository('AppBundle:Event')->findOneBy(['slug' => $slug]);
-        $form = $this->createForm(new CommentType());
-        return array(
-            "event" => $event,
-            "form" => $form->createView(),
-        );
+        $events = $this->getDoctrine()->getManager()->getRepository('AppBundle:Event')->findAll();
+
+        return ['events' => $events];
     }
 
     /**

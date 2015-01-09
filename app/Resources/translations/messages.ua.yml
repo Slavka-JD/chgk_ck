@@ -18,6 +18,7 @@ event:
     event_title: "Назва події"
     event_author: "Автор"
     event_body: "Опишіть подію тут"
+    event_delete_message: "Видалити"
 
 player:
     player_name: "Вкажіть ПІБ гравця"

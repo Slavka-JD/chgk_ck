@@ -34,7 +34,6 @@ class CommentController extends Controller
             $comments = $this->get('requesthandler')->handleAddComment($event);
             return new JsonResponse($comments);
         }
-        return JsonResponse::create(["code" => 200]);
     }
 
     /**

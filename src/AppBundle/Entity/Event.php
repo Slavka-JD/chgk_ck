@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="event")
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  * @ORM\HasLifecycleCallbacks()
+ *
  */
 class Event
 {
@@ -272,6 +273,18 @@ class Event
         return $this;
     }
 
+//    /**
+//     * Set slug
+//     *
+//     * @param  string $slug
+//     * @return Event
+//     */
+//    public function setSlug($slug)
+//    {
+//        $this->slug = $slug;
+//        return $this;
+//    }
+
     /**
      * Get slug
      *
@@ -280,18 +293,6 @@ class Event
     public function getSlug()
     {
         return $this->slug;
-    }
-
-    /**
-     * Set slug
-     *
-     * @param  string $slug
-     * @return Event
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-        return $this;
     }
 
     /**

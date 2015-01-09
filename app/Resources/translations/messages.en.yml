@@ -18,6 +18,7 @@ event:
     event_title: "Title"
     event_author: "Author"
     event_body: "Describe your event here"
+    event_delete_message: "Delete"
 
 player:
     player_name: "Enter the player's full name"

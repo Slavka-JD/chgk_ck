@@ -1,7 +1,7 @@
 <?php
 namespace AppBundle\Services;
 
-class Mailer
+class MailerHandler
 {
     protected $mailer;
 

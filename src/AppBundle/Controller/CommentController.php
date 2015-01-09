@@ -10,7 +10,6 @@ use AppBundle\Entity\Comment;
 use AppBundle\Form\Type\CommentType;
 
 class CommentController extends Controller
-
 {
     /**
      * @param $slug

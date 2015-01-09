@@ -6,7 +6,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Hautelook\AliceBundle\Alice\DataFixtureLoader;
 use Nelmio\Alice\Fixtures;
 
-class LoadTeamPlayerData extends DataFixtureLoader
+class LoadData extends DataFixtureLoader
 {
     public function load(ObjectManager $om)
     {

@@ -54,6 +54,11 @@ app_team_add:
     methods: [GET, POST]
     defaults: { _controller: AppBundle:Team:add}
 
+app_team_view:
+    path: /{_locale}/event/{slug}/view
+    methods: [GET]
+    defaults: { _controller: AppBundle:Team:view}
+
 app_team_delete:
     path: /team/{slug}/delete
     methods: [DELETE]

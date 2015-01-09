@@ -32,9 +32,9 @@ class CommentController extends Controller
                 ->getRepository('AppBundle:Event')
                 ->findBySlugEvent($slug);
             $comments = $this->get('requesthandler')->handleAddComment($event);
-            return new JsonResponse([$comments]);
+            return new JsonResponse($comments);
         }
-        return new JsonResponse([], 500);
+        return JsonResponse::create(["code" => 200]);
     }
 
     /**

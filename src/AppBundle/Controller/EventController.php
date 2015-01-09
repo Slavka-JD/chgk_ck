@@ -47,7 +47,7 @@ class EventController extends Controller
      */
     public function viewAction($slug)
     {
-        $event = $this->getDoctrine()->getRepository('AppBundle:Event')->findOneBy(['slugEvent' => $slug]);
+        $event = $this->getDoctrine()->getRepository('AppBundle:Event')->findOneBy(['slug' => $slug]);
         $form = $this->createForm(new CommentType());
         return array(
             "event" => $event,
@@ -63,7 +63,7 @@ class EventController extends Controller
     public function deleteAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
-        $event = $em->getRepository('AppBundle:Event')->findOneBy(['slugEvent' => $slug]);
+        $event = $em->getRepository('AppBundle:Event')->findOneBy(['slug' => $slug]);
         $this->get('request_handler');
         $em->remove($event);
         $em->flush();

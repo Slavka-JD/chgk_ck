@@ -48,6 +48,22 @@ class TeamController extends Controller
     }
 
     /**
+     * @Template()
+     *
+     * @param $slug
+     * @return array
+     */
+    public function viewAction($slug)
+    {
+        $team = $this->getDoctrine()->getRepository('AppBundle:Team')->findOneBy(['slug' => $slug]);
+        $form = $this->createForm(new TeamType());
+        return array(
+            "team" => $team,
+            "form" => $form->createView(),
+        );
+    }
+
+    /**
      * @Route("/admin")
      * @param $slug
      * @return \Symfony\Component\HttpFoundation\Response|static

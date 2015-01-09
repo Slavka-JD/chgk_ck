@@ -19,55 +19,62 @@ class Event
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=150)
      * @Assert\NotBlank()
      * @Assert\Length(min = 2, max = 50)
      */
-    protected $title;
+    private $title;
 
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
      *
      */
-    protected $text;
+    private $text;
 
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
-    protected $author;
+    private $author;
+
     /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime", name="createdAt")
      */
-    protected $createdAt;
+    private $createdAt;
+
     /**
      * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime", nullable=true, name="updatedAt")
      */
-    protected $updatedAt;
+    private $updatedAt;
+
     /**
      * @ORM\Column(type="datetime", nullable=true, name="deletedAt")
      */
-    protected $deletedAt;
+    private $deletedAt;
+
     /**
      * @Gedmo\Slug(fields={"title"})
-     * @ORM\Column(type="string", length=128, unique=true)
+     * @ORM\Column(name="slug", type="string", length=255)
      */
-    protected $slugPost;
+    private $slug;
+
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="post", orphanRemoval=true)
      */
-    protected $comments;
+    private $comments;
+
     /**
      * @var integer
      *
      * @ORM\Column(type="integer", name="`like`", nullable=true)
      */
     private $like;
+
     /**
      * @var integer
      *
@@ -266,31 +273,31 @@ class Event
     }
 
     /**
-     * Get slugPost
+     * Get slug
      *
      * @return string
      */
-    public function getSlugPost()
+    public function getSlug()
     {
-        return $this->slugPost;
+        return $this->slug;
     }
 
     /**
-     * Set slugPost
+     * Set slug
      *
-     * @param  string $slugPost
+     * @param  string $slug
      * @return Event
      */
-    public function setSlugPost($slugPost)
+    public function setSlug($slug)
     {
-        $this->slugPost = $slugPost;
+        $this->slug = $slug;
         return $this;
     }
 
     /**
-     * Add comments
+     * Add Comment
      *
-     * @param  \AppBundle\Entity\Comment $comments
+     * @param  \AppBundle\Entity\Comment $comment
      * @return Event
      */
     public function addComment(\AppBundle\Entity\Comment $comment)
@@ -300,9 +307,9 @@ class Event
     }
 
     /**
-     * Remove comments
+     * Remove Comment
      *
-     * @param \AppBundle\Entity\Comment $comments
+     * @param \AppBundle\Entity\Comment $comment
      */
     public function removeComment(\AppBundle\Entity\Comment $comment)
     {
@@ -310,7 +317,7 @@ class Event
     }
 
     /**
-     * Get comments
+     * Get Comment
      *
      * @return \Doctrine\Common\Collections\Collection
      */

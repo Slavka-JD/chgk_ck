@@ -7,59 +7,67 @@ app_homepage:
      path: /{_locale}
      methods: [GET, POST]
      defaults: { _controller: AppBundle:Default:index, _locale: en}
-
-blog_home:
-  path: /{_locale}
-  methods: [GET]
-  defaults: { _controller: ValiknetBlogPostsBundle:Post:index, _locale: ua}
-  requirements:
+     requirements:
     _locale: en|ua|ru
-  options:
-    expose: true
+     options:
+     expose: true
 
-post_add_get:
-  path: /{_locale}/post/add
+event_add:
+  path: /{_locale}/event/add
   methods: [GET, POST]
-  defaults: { _controller: ValiknetBlogPostsBundle:Post:add}
+  defaults: { _controller: AppBundle:Event:add}
 
-view_post:
-  path: /{_locale}/post/{slug}/view
+event_view:
+  path: /{_locale}/event/{slug}/view
   methods: [GET]
-  defaults: { _controller: ValiknetBlogPostsBundle:Post:view}
+  defaults: { _controller: AppBundle:Event:view}
 
-edit_post:
-  path: /{_locale}/post/{slug}/edit
-  methods: [GET, POST]
-  defaults: { _controller: ValiknetBlogPostsBundle:Post:edit}
-
-delete_post:
-  path: /post/{slug}/delete
+event_delete:
+  path: /event/{slug}/delete
   methods: [DELETE]
-  defaults: { _controller: ValiknetBlogPostsBundle:Post:deletePost}
-
-tag_last_page:
-  path: /{_locale}/tag/last
-  methods: [GET]
-  defaults: { _controller: ValiknetBlogPostsBundle:Tag:last}
-
-tag_page:
-  path: /{_locale}/tag/{slug}/view
-  methods: [GET]
-  defaults: { _controller: ValiknetBlogPostsBundle:Tag:index}
-
-tag_top:
-  path: /tag/topTags
-  methods: [GET]
-  defaults: { _controller: ValiknetBlogPostsBundle:Tag:topTags}
+  defaults: { _controller: AppBundle:Event:delete}
 
 comment_add:
   path: /comment/{slug}/add
   methods: [POST]
-  defaults: { _controller: ValiknetBlogPostsBundle:Comment:createComment}
+  defaults: { _controller: AppBundle:Comment:add}
 
 comment_last:
   path: /{_locale}/comment/last/{count}
-  defaults: { _controller: ValiknetBlogPostsBundle:Comment:last, count: 10}
+  defaults: { _controller: AppBundle:Comment:last, count: 10}
   requirements:
     count: \d+
   methods: [GET]
+
+player_add:
+  path: /{_locale}/player/add
+  methods: [GET, POST]
+  defaults: { _controller: AppBundle:Player:add}
+
+player_delete:
+  path: /player/{slug}/delete
+  methods: [DELETE]
+  defaults: { _controller: AppBundle:Player:delete}
+
+team_add:
+  path: /{_locale}/team/add
+  methods: [GET, POST]
+  defaults: { _controller: AppBundle:Team:add}
+
+team_delete:
+  path: /team/{slug}/delete
+  methods: [DELETE]
+  defaults: { _controller: AppBundle:Team:delete}
+
+tournament_add:
+  path: /{_locale}/tournament/add
+  methods: [GET, POST]
+  defaults: { _controller: AppBundle:Tournament:add}
+
+tournament_delete:
+  path: /tournament/{slug}/delete
+  methods: [DELETE]
+  defaults: { _controller: AppBundle:Tournament:delete}
+
+
+

@@ -17,7 +17,7 @@ class CommentController extends Controller
      * @param  Request $request
      * @return JsonResponse
      */
-    public function createCommentAction($slug, Request $request)
+    public function addAction($slug, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $comment = new Comment();

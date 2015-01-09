@@ -21,7 +21,7 @@ class PlayerController extends Controller
      *
      */
 
-    public function indexAction(Request $request)
+    public function addAction(Request $request)
     {
         $locale = $request->getLocale();
 
@@ -52,7 +52,7 @@ class PlayerController extends Controller
      * @param $slug
      * @return \Symfony\Component\HttpFoundation\Response|static
      */
-    public function deletePlayerAction($slug)
+    public function deleteAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
         $player = $em->getRepository('AppBundle:Player')->findOneBy(['slugPlayer' => $slug]);

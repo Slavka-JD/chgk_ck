@@ -60,7 +60,7 @@ class EventController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response|static
      *
      */
-    public function deleteEventAction($slug)
+    public function deleteAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
         $event = $em->getRepository('AppBundle:Event')->findOneBy(['slugEvent' => $slug]);

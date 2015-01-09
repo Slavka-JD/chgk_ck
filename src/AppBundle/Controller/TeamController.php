@@ -21,7 +21,7 @@ class TeamController extends Controller
      *
      */
 
-    public function indexAction(Request $request)
+    public function addAction(Request $request)
     {
         $locale = $request->getLocale();
 
@@ -52,7 +52,7 @@ class TeamController extends Controller
      * @param $slug
      * @return \Symfony\Component\HttpFoundation\Response|static
      */
-    public function deleteTeamAction($slug)
+    public function deleteAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
         $team = $em->getRepository('AppBundle:Team')->findOneBy(['slugTeam' => $slug]);

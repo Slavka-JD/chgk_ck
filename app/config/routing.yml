@@ -7,3 +7,67 @@ app_homepage:
      path: /{_locale}
      methods: [GET, POST]
      defaults: { _controller: AppBundle:Default:index, _locale: en}
+     requirements:
+    _locale: en|ua|ru
+     options:
+     expose: true
+
+event_add:
+  path: /{_locale}/event/add
+  methods: [GET, POST]
+  defaults: { _controller: AppBundle:Event:add}
+
+event_view:
+  path: /{_locale}/event/{slug}/view
+  methods: [GET]
+  defaults: { _controller: AppBundle:Event:view}
+
+event_delete:
+  path: /event/{slug}/delete
+  methods: [DELETE]
+  defaults: { _controller: AppBundle:Event:delete}
+
+comment_add:
+  path: /comment/{slug}/add
+  methods: [POST]
+  defaults: { _controller: AppBundle:Comment:add}
+
+comment_last:
+  path: /{_locale}/comment/last/{count}
+  defaults: { _controller: AppBundle:Comment:last, count: 10}
+  requirements:
+    count: \d+
+  methods: [GET]
+
+player_add:
+  path: /{_locale}/player/add
+  methods: [GET, POST]
+  defaults: { _controller: AppBundle:Player:add}
+
+player_delete:
+  path: /player/{slug}/delete
+  methods: [DELETE]
+  defaults: { _controller: AppBundle:Player:delete}
+
+team_add:
+  path: /{_locale}/team/add
+  methods: [GET, POST]
+  defaults: { _controller: AppBundle:Team:add}
+
+team_delete:
+  path: /team/{slug}/delete
+  methods: [DELETE]
+  defaults: { _controller: AppBundle:Team:delete}
+
+tournament_add:
+  path: /{_locale}/tournament/add
+  methods: [GET, POST]
+  defaults: { _controller: AppBundle:Tournament:add}
+
+tournament_delete:
+  path: /tournament/{slug}/delete
+  methods: [DELETE]
+  defaults: { _controller: AppBundle:Tournament:delete}
+
+
+

@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\FormBuilderInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template as Template;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use AppBundle\Form\Type\TournamentType;
 use AppBundle\Entity\Tournament;
@@ -22,7 +23,7 @@ class TournamentController extends Controller
      *
      */
 
-    public function indexAction(Request $request)
+    public function addAction(Request $request)
     {
         $locale = $request->getLocale();
 
@@ -56,7 +57,7 @@ class TournamentController extends Controller
         ));
     }
 
-    public function deleteTournamentAction($slug)
+    public function deletection($slug)
     {
         $em = $this->getDoctrine()->getManager();
         $tournament = $em->getRepository('AppBundle:Tournament')->findOneBy(['slugTournament' => $slug]);

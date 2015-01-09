@@ -30,3 +30,21 @@ AppBundle\Entity\Result:
     team: @team*
     points: <numberBetween(0, 45)>
     place: <numberBetween(1, 10)>
+
+AppBundle\Entity\Event:
+  events{1..5}:
+    title: <eventTitle()>
+    description: <realText()>
+    author: <firstName()>
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    deletedAt: <dateTime()>
+    like: <numberBetween(1, 100)>
+    dislike: <numberBetween(1, 100)>
+
+AppBundle\Entity\Comment:
+  comments{1..10}:
+    author: <firstName()>
+    text: <realText()>
+    createdAt: <dateTime()>
+    event: @events*

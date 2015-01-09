@@ -39,34 +39,41 @@ class Event
      * @ORM\Column(type="string", length=200, nullable=true)
      */
     protected $author;
-
     /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime", name="createdAt")
      */
     protected $createdAt;
-
     /**
      * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime", nullable=true, name="updatedAt")
      */
     protected $updatedAt;
-
     /**
      * @ORM\Column(type="datetime", nullable=true, name="deletedAt")
      */
     protected $deletedAt;
-
     /**
      * @Gedmo\Slug(fields={"title"})
      * @ORM\Column(type="string", length=128, unique=true)
      */
     protected $slugPost;
-
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="post", orphanRemoval=true)
      */
-    protected $comment;
+    protected $comments;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", name="`like`", nullable=true)
+     */
+    private $like;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $dislike;
 
     /**
      * Constructor
@@ -149,6 +156,50 @@ class Event
     public function setAuthor($author)
     {
         $this->author = $author;
+        return $this;
+    }
+
+    /**
+     * Get like
+     *
+     * @return integer
+     */
+    public function getLike()
+    {
+        return $this->like;
+    }
+
+    /**
+     * Set like
+     *
+     * @param integer $like
+     * @return Event
+     */
+    public function setLike($like)
+    {
+        $this->like = $like;
+        return $this;
+    }
+
+    /**
+     * Get dislike
+     *
+     * @return integer
+     */
+    public function getDislike()
+    {
+        return $this->dislike;
+    }
+
+    /**
+     * Set dislike
+     *
+     * @param integer $dislike
+     * @return Event
+     */
+    public function setDislike($dislike)
+    {
+        $this->dislike = $dislike;
         return $this;
     }
 
@@ -237,9 +288,9 @@ class Event
     }
 
     /**
-     * Add comment
+     * Add comments
      *
-     * @param  \AppBundle\Entity\Comment $comment
+     * @param  \AppBundle\Entity\Comment $comments
      * @return Event
      */
     public function addComment(\AppBundle\Entity\Comment $comment)
@@ -249,9 +300,9 @@ class Event
     }
 
     /**
-     * Remove comment
+     * Remove comments
      *
-     * @param \AppBundle\Entity\Comment $comment
+     * @param \AppBundle\Entity\Comment $comments
      */
     public function removeComment(\AppBundle\Entity\Comment $comment)
     {
@@ -259,12 +310,12 @@ class Event
     }
 
     /**
-     * Get comment
+     * Get comments
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getComment()
+    public function getComments()
     {
-        return $this->comment;
+        return $this->comments;
     }
 }

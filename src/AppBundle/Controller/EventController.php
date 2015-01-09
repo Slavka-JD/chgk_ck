@@ -42,17 +42,12 @@ class EventController extends Controller
     /**
      * @Template()
      *
-     * @param $slug
-     * @return array
      */
-    public function viewAction($slug)
+    public function viewAction()
     {
-        $event = $this->getDoctrine()->getRepository('AppBundle:Event')->findOneBy(['slugEvent' => $slug]);
-        $form = $this->createForm(new CommentType());
-        return array(
-            "event" => $event,
-            "form" => $form->createView(),
-        );
+        $events = $this->getDoctrine()->getManager()->getRepository('AppBundle:Event')->findAll();
+
+        return ['events' => $events];
     }
 
     /**
@@ -63,7 +58,7 @@ class EventController extends Controller
     public function deleteAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
-        $event = $em->getRepository('AppBundle:Event')->findOneBy(['slugEvent' => $slug]);
+        $event = $em->getRepository('AppBundle:Event')->findOneBy(['slug' => $slug]);
         $this->get('request_handler');
         $em->remove($event);
         $em->flush();

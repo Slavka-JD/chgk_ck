@@ -34,7 +34,7 @@ AppBundle\Entity\Result:
 AppBundle\Entity\Event:
   events{1..5}:
     title: <eventTitle()>
-    description: <realText()>
+    text: <realText()>
     author: <firstName()>
     createdAt: <dateTime()>
     updatedAt: <dateTime()>
@@ -46,5 +46,6 @@ AppBundle\Entity\Comment:
   comments{1..10}:
     author: <firstName()>
     text: <realText()>
+    type: <boolean(50)>
     createdAt: <dateTime()>
     event: @events*

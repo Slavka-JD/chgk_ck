@@ -33,13 +33,18 @@ class Comment
     protected $text;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $type;
+
+    /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
     protected $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Event", inversedBy="comment")
+     * @ORM\ManyToOne(targetEntity="Event", inversedBy="comments")
      * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
      */
     protected $event;
@@ -121,9 +126,52 @@ class Comment
     }
 
     /**
+     * Get type
+     *
+     * @return boolean
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set type
+     *
+     * @param boolean $type
+     * @return Comment
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+        return $this;
+    }
+
+    /**
+     * Add event
+     *
+     * @param \AppBundle\Entity\Event $event
+     * @return Comment
+     */
+    public function addEvent(\AppBundle\Entity\Event $event)
+    {
+        $this->event[] = $event;
+        return $this;
+    }
+    /**
+     * Remove event
+     *
+     * @param \AppBundle\Entity\Event $event
+     */
+    public function removeEvent(\AppBundle\Entity\Event $event)
+    {
+        $this->event->removeElement($event);
+    }
+
+    /**
      * Get event
      *
-     * @return \AppBundle\Entity\Event
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getEvent()
     {
@@ -133,11 +181,18 @@ class Comment
     /**
      * Set event
      *
-     * @param  \AppBundle\Entity\Event $event
+     * @param \AppBundle\Entity\Event $event
      * @return Comment
      */
     public function setEvent(\AppBundle\Entity\Event $event = null)
     {
+        if ($this->type) {
+            $count = $event->getLike();
+            $event->setLike($count + 1);
+        } else {
+            $count = $event->getDislike();
+            $event->setDislike($count + 1);
+        }
         $this->event = $event;
         return $this;
     }

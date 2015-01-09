@@ -9,9 +9,15 @@ class ResultType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('team');
-        $builder->add('points');
-        $builder->add('place');
+        $builder->add('team', array(
+            'label' => 'team.team_name'
+        ));
+        $builder->add('points', array(
+            'label' => 'result.result_points'
+        ));
+        $builder->add('place', array(
+            'label' => 'result.result_place'
+        ));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

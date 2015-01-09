@@ -86,6 +86,17 @@ class LoadTeamPlayerData extends DataFixtureLoader
         return $names[array_rand($names)];
     }
 
+    public function eventTitle()
+    {
+        $names = array(
+            'Приглашаем на ежегодное жертвоприношение',
+            'Приходите, тараканы, я вас чаем угощу',
+            'Будете у нас на Колыме...',
+        );
+
+        return $names[array_rand($names)];
+    }
+
     protected function getFixtures()
     {
         return array(

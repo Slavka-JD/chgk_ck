@@ -44,3 +44,7 @@ tournament:
 
 submit:
 submit_button: "Send"
+
+contacts:
+    contacts_title: "Contact us!"
+    contacts_email: "Keep complaining:"

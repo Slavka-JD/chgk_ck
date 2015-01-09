@@ -45,3 +45,6 @@ tournament:
 submit:
 submit_button: "Надіслати"
 
+contacts:
+    contacts_title: "Зв’яжіться з нами!"
+    contacts_email: "Тут ви можете поскаржитися:"

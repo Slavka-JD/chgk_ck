@@ -21,31 +21,35 @@
         <ul class="nav navbar-nav">
             <li>
                 <div>
-                    <a class="navbar-brand"> {{ "navbar.navbar_homepage"|trans() }}</a>
+                    <a class="navbar-brand"
+                       href="{{ path('app_homepage') }}"> {{ "navbar.navbar_homepage"|trans() }}</a>
                 </div>
             </li>
 
             <li>
                 <div>
-                    <a class="navbar-brand"> {{ "navbar.navbar_teams"|trans() }}</a>
+                    <a class="navbar-brand" href="{{ path('app_team_add') }}"> {{ "navbar.navbar_teams"|trans() }}</a>
                 </div>
             </li>
 
             <li>
                 <div>
-                    <a class="navbar-brand"> {{ "navbar.navbar_tournaments"|trans() }}</a>
+                    <a class="navbar-brand"
+                       href="{{ path('app_tournament_add') }}"> {{ "navbar.navbar_tournaments"|trans() }}</a>
                 </div>
             </li>
 
             <li>
                 <div>
-                    <a class="navbar-brand"> {{ "navbar.navbar_events"|trans() }}</a>
+                    <a class="navbar-brand"
+                       href="{{ path('app_event_view') }}"> {{ "navbar.navbar_events"|trans() }}</a>
                 </div>
             </li>
 
             <li>
                 <div>
-                    <a class="navbar-brand" href=""> {{ "navbar.navbar_contacts"|trans() }}</a>
+                    <a class="navbar-brand"
+                       href="{{ path('app_contacts') }}"> {{ "navbar.navbar_contacts"|trans() }}</a>
                 </div>
             </li>
 
@@ -64,8 +68,10 @@
             </li>
         </ul>
     </nav>
+</div>
     {% block content %}{% endblock %}
 </div>
+
 {% block javascripts %}{% endblock %}</body>
 
 </html>

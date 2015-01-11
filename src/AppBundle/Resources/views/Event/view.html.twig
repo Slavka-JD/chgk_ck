@@ -6,12 +6,14 @@
         {% for event in events %}
             <div class="webber-article">
                 <div class="control-block">
+                    <p style="font-family:'Times New Roman', Times, serif; font-size: 25pt;">
                     <a href="{{ path('app_event_delete', {'slug' : event.getSlug }) }}" id="delete_event">
                         {{ "event.event_delete_message"|trans() }}
                     </a>
                 </div>
 
                 <div class="title">
+                    <p style="font-family:'Times New Roman', Times, serif; font-size: 25pt;">
                     <a href="{{ path('app_event_view', {'slug':event.getSlug }) }}">{{ event.title }}</a>
                 </div>
                 <div class="info-block">
@@ -26,7 +28,7 @@
                 </div>
             </div>
 
-            <div class="comment-article">
+            <div class="container">
                 <h3>Ваш комментарий:</h3>
 
                 <ul id="category_list">
@@ -65,9 +67,12 @@
             <br /><br /><br />
         {% endfor %}
     </div>
-    <div class="col-md-12">
+    <div class="container">
+        <div class="col-md-12">
+            <p style="font-family:'Times New Roman', Times, serif; font-size: 25pt;">
         <a href="{{ path('app_event_add') }}">Добавить новое событие</a>
         {% block forms %}
         {% endblock %}
+    </div>
     </div>
 {% endblock %}

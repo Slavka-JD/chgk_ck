@@ -57,6 +57,7 @@ class Result
     public function __construct()
     {
         $this->teams = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tournaments = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**

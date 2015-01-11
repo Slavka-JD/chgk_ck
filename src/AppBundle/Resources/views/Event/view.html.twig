@@ -16,9 +16,9 @@
                 </div>
                 <div class="info-block">
                     <p>
-                        {{ "event.event_created_at"|trans() }}: <b>{{ event.createdAt|date("d.m.Y H:i:s") }}</b><br>
+                        Событие от: <b>{{ event.createdAt|date("d.m.Y H:i:s") }}</b><br>
                         {{ "event.event_author"|trans() }}: <b>{{ event.author }}</b><br>
-                        {{ "event.event_comments_count"|trans() }}: <b>{{ event.comment|length }}</b>
+                        Количество комментариев: <b>{{ event.comment|length }}</b>
                     </p>
                 </div>
                 <div class="text">
@@ -27,7 +27,7 @@
             </div>
 
             <div class="comment-article">
-                <h3>{{ "comment.comment_body"|trans() }}:</h3>
+                <h3>Ваш комментарий:</h3>
 
                 <ul id="category_list">
                     {% for comment in event.comment|reverse %}
@@ -64,5 +64,10 @@
             </div>
             <br /><br /><br />
         {% endfor %}
+    </div>
+    <div class="col-md-12">
+        <a href="{{ path('app_event_add') }}">Добавить новое событие</a>
+        {% block forms %}
+        {% endblock %}
     </div>
 {% endblock %}

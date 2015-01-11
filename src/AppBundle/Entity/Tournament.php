@@ -7,9 +7,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Tournament
  *
- * @ORM\Table()
+ * @ORM\Table(name="Tournament")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TournamentRepository")
  *
  */

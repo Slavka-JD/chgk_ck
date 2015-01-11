@@ -27,7 +27,7 @@ class EventController extends Controller
         $events = $paginator->paginate(
             $events,
             $request->query->get('page', 1),
-            3
+            1
         );
         $comment = new Comment();
         $form = $this->createForm(new CommentType(), $comment);

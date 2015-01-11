@@ -27,7 +27,8 @@
             <ol>
                 {% for Player in Players %}
                     <li>
-                        {{ Player.name }} - дата рождения {{ Player.age.format('Y-m-d H:i:s') }}, почта {{ Player.email }}, амплуа {{ Player.type }}
+                        {{ Player.name }} - дата рождения {{ Player.age.format('Y-m-d') }}, почта {{ Player.email }},
+                        амплуа {{ Player.type }}
                         <p>С нами с: {{ Player.created.format('Y-m-d H:i:s') }} </p>
                     </li>
                     <ol>

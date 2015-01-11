@@ -21,6 +21,7 @@ class PlayerType extends AbstractType
             'label' => 'player.player_name'
         ));
         $builder->add('age', 'date', array(
+            'years' => range(date('Y') - 100, date('Y') - 10),
             'label' => 'player.player_age'
         ));
         $builder->add('email', 'email', array(
@@ -33,7 +34,6 @@ class PlayerType extends AbstractType
                 'капитан'       => 'капитан',
             ],
             'data' => 'базовый игрок',
-            'required' => true,
             'label' => 'player.player_type'
         ));
         $builder->add('teams', 'entity', array(

@@ -49,7 +49,6 @@ class TeamType extends AbstractType
         ));
     }
 
-
     public function getName()
     {
         return 'Team';

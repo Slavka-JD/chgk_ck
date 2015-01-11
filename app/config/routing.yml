@@ -60,12 +60,17 @@ app_team_view:
 app_tournament_add:
     path: /{_locale}/tournament/add
     methods: [GET, POST]
-    defaults: { _controller: AppBundle:Tournament:add }
+    defaults: { _controller: AppBundle:TournamentResult:addTournament }
 
-app_tournament_delete:
-    path: /tournament/{slug}/delete
-    methods: [DELETE]
-    defaults: { _controller: AppBundle:Tournament:delete }
+app_tournament_view:
+    path: /{_locale}/tournament/view
+    methods: [GET, POST]
+    defaults: { _controller: AppBundle:TournamentResult:view }
+
+app_result_add:
+    path: /{_locale}/result/add
+    methods: [GET, POST]
+    defaults: { _controller: AppBundle:TournamentResult:addResult }
 
 app_contacts:
     path: /{_locale}/contacts

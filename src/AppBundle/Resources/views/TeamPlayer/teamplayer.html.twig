@@ -1,0 +1,52 @@
+{% extends ':default:layout.html.twig' %}
+
+{% block content %}
+    {{ parent() }}
+    <div id="wrapper" class="container">
+        <div class="col-md-6">
+            <h3>Список команд и игроков:</h3>
+            <ol>
+                {% for Team in Teams %}
+                    <li>
+                        <h4>{{ Team.name }} - {{ Team.type }} - рейтинг: {{ Team.rating }}</h4>
+                        <p>{{ Team.description }}</p>
+                        <ol>
+                            {% for Player in Team.Players %}
+                                <li>
+                                    {{ Player.name }}
+                                </li>
+                            {% endfor %}
+                        </ol>
+                    </li><br>
+                {% endfor %}
+            </ol>
+        </div>
+
+        <div class="col-md-6">
+            <h3>Список всех игроков:</h3>
+            <ol>
+                {% for Player in Players %}
+                    <li>
+                        {{ Player.name }} - дата рождения {{ Player.age.format('Y-m-d H:i:s') }}, почта {{ Player.email }}, амплуа {{ Player.type }}
+                        <p>С нами с: {{ Player.created.format('Y-m-d H:i:s') }} </p>
+                    </li>
+                    <ol>
+                        {% for Team in Player.Team %}
+                            <li>
+                                {{ Team.name }}
+                            </li>
+                        {% endfor %}
+                    </ol>
+                {% endfor %}
+            </ol>
+        </div>
+
+        <div class="col-md-12">
+            <a href="{{ path('app_player_add') }}">Добавить нового игрока</a>
+            <a href="{{ path('app_team_add') }}">Добавить новую команду</a>
+            {% block forms %}
+            {% endblock %}
+        </div>
+
+    </div>
+{% endblock %}

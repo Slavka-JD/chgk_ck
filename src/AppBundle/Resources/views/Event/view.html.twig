@@ -1,0 +1,68 @@
+{% extends ':default:layout.html.twig' %}
+{% trans_default_domain "messages" %}
+
+{% block content %}
+    <div class="container">
+        {% for event in events %}
+            <div class="webber-article">
+                <div class="control-block">
+                    <a href="{{ path('app_event_delete', {'slug' : event.getSlug }) }}" id="delete_event">
+                        {{ "event.event_delete_message"|trans() }}
+                    </a>
+                </div>
+
+                <div class="title">
+                    <a href="{{ path('app_event_view', {'slug':event.getSlug }) }}">{{ event.title }}</a>
+                </div>
+                <div class="info-block">
+                    <p>
+                        {{ "event.event_created_at"|trans() }}: <b>{{ event.createdAt|date("d.m.Y H:i:s") }}</b><br>
+                        {{ "event.event_author"|trans() }}: <b>{{ event.author }}</b><br>
+                        {{ "event.event_comments_count"|trans() }}: <b>{{ event.comment|length }}</b>
+                    </p>
+                </div>
+                <div class="text">
+                    <p>{{ event.text }}</p>
+                </div>
+            </div>
+
+            <div class="comment-article">
+                <h3>{{ "comment.comment_body"|trans() }}:</h3>
+
+                <ul id="category_list">
+                    {% for comment in event.comment|reverse %}
+                        <li>
+                            <div class="comment">
+                                <div class="info-block">
+                                    <p>
+                                        <span>{{ "comment.comment_author"|trans() }}: <strong>{{ comment.author }}</strong></span>
+                                        <br />
+                                        <span>Created at: <strong>{{ comment.createdAt|date("d.m.Y H:i:s") }}</strong></span>
+                                    </p>
+                                </div>
+
+                                <div class="text">
+                                    <p>{{ comment.text }}</p>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <div>
+                    <h3>{{ "comment.comment_body"|trans() }}:</h3>
+
+                    <form id="comment_add" role="form" action="{{ path("app_comment_add", {"slug" : event.slug}) }}" method="post" >
+                        <div>{{ form_row(form.author) }}</div>
+                        <div>{{ form_row(form.text) }}</div>
+                        {{ form_rest(form) }}
+                        <div>
+                            <input type="submit" value="{{ "submit.submit_button"|trans() }}">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br /><br /><br />
+        {% endfor %}
+    </div>
+{% endblock %}

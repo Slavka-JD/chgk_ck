@@ -1,5 +1,5 @@
 navbar:
-    navbar_brand: "Черкаський клуб Інтелектуальних ігр"
+    navbar_brand: "Черкаський клуб інтелектуальних ігр"
     navbar_homepage: "Головна"
     navbar_teams: "Команди"
     navbar_tournaments: "Турніри"
@@ -48,4 +48,4 @@ submit_button: "Надіслати"
 
 contacts:
     contacts_title: "Зв’яжіться з нами!"
-    contacts_email: "Тут ви можете поскаржитися:"
+    contacts_email: "Тут ви можете поскаржитися:<<<<<="

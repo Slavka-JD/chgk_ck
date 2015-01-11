@@ -24,16 +24,16 @@ class CommentController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $comment->setEvent($this->getDoctrine()->getManager()->getRepository('AppBundle:Event')->findOneBySlugEvent($slug));
-            $em->persist($comment);
-            $em->flush();
             $event = $this->getDoctrine()
                 ->getManager()
                 ->getRepository('AppBundle:Event')
-                ->findBySlugEvent($slug);
-            $comments = $this->get('requesthandler')->handleAddComment($event);
-            return new JsonResponse($comments);
+                ->findOneBySlug($slug);
+            $comment->setEvent($event);
+            $em->persist($comment);
+            $em->flush();
         }
+        $this->get('session')->getFlashBag()->add('success', 'Thanks for your comment! Your opinion is very important for us.');
+        return $this->redirect($this->generateUrl('app_event_view', ['locale' => $request->getLocale()]));
     }
 
     /**

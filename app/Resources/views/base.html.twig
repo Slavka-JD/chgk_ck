@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{% block title %}{{ "navbar.navbar_name"|trans() }}{% endblock %}</title>
+
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}"/>
 </head>
@@ -28,7 +29,7 @@
 
             <li>
                 <div>
-                    <a class="navbar-brand" href=""> {{ "navbar.navbar_teams"|trans() }}</a>
+                    <a class="navbar-brand" href="{{ path('app_team_view') }}"> {{ "navbar.navbar_teams"|trans() }}</a>
                 </div>
             </li>
 
@@ -69,6 +70,15 @@
         </ul>
     </nav>
 </div>
+
+{% for key, flash in app.session.getFlashBag().all() %}
+    <div class="container {{ key }}">
+        {% for message in flash %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endfor %}
+
 {% block content %}{% endblock %}
 {% block javascripts %}{% endblock %}
 

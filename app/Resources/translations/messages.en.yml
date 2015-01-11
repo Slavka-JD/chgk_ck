@@ -44,8 +44,8 @@ tournament:
     tournament_results: "Add the tournament's results"
 
 submit:
-submit_button: "Send"
+    submit_button: "Send"
 
 contacts:
     contacts_title: "Contact us!"
-    contacts_email: "Keep complaining:"
+    contacts_email: "Keep complaining:<<<<<="

@@ -2,17 +2,18 @@
 
 namespace AppBundle\Services;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use AppBundle\Entity\Event;
 
 class RequestHandler
 {
-    protected $requestStack;
+    private $request;
 
     public function __construct(RequestStack $requestStack)
     {
-        $this->requestStack = $requestStack->getCurrentRequest();
+        $this->request = $requestStack->getCurrentRequest();
     }
 
     public function handleAddComment(Event $event)

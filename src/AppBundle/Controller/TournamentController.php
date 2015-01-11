@@ -57,7 +57,7 @@ class TournamentController extends Controller
         ));
     }
 
-    public function deletection($slug)
+    public function deleteAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
         $tournament = $em->getRepository('AppBundle:Tournament')->findOneBy(['slugTournament' => $slug]);

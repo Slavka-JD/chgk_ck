@@ -7,8 +7,9 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ *
+ * @ORM\Table(name="Event")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EventRepository")
- * @ORM\Table(name="event")
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  * @ORM\HasLifecycleCallbacks()
  *
@@ -48,26 +49,20 @@ class Event
     private $createdAt;
 
     /**
-     * @Gedmo\Timestampable(on="update")
-     * @ORM\Column(type="datetime", nullable=true, name="updatedAt")
-     */
-    private $updatedAt;
-
-    /**
      * @ORM\Column(type="datetime", nullable=true, name="deletedAt")
      */
     private $deletedAt;
 
     /**
      * @Gedmo\Slug(fields={"title"})
-     * @ORM\Column(name="slug", type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true )
      */
     private $slug;
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="post", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="event", orphanRemoval=true)
      */
-    private $comments;
+    private $comment;
 
     /**
      * @var integer
@@ -234,24 +229,6 @@ class Event
     }
 
     /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function setUpdatedAt()
-    {
-        $this->updatedAt = new \DateTime();
-    }
-
-    /**
      * Get deletedAt
      *
      * @return \DateTime
@@ -273,18 +250,6 @@ class Event
         return $this;
     }
 
-//    /**
-//     * Set slug
-//     *
-//     * @param  string $slug
-//     * @return Event
-//     */
-//    public function setSlug($slug)
-//    {
-//        $this->slug = $slug;
-//        return $this;
-//    }
-
     /**
      * Get slug
      *
@@ -296,9 +261,21 @@ class Event
     }
 
     /**
+     * Set slug
+     *
+     * @param  string $slug
+     * @return Event
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+        return $this;
+    }
+
+    /**
      * Add Comment
      *
-     * @param  \AppBundle\Entity\Comment $comment
+     * @param \AppBundle\Entity\Comment $comment
      * @return Event
      */
     public function addComment(\AppBundle\Entity\Comment $comment)
@@ -322,8 +299,8 @@ class Event
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getComments()
+    public function getComment()
     {
-        return $this->comments;
+        return $this->comment;
     }
 }

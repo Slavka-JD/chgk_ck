@@ -8,6 +8,13 @@ use AppBundle\Entity\Team;
 
 class PlayerType extends AbstractType
 {
+    protected $players;
+
+    public function __construct(Array $players)
+    {
+        $this->players = $players;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name', 'text', array(
@@ -19,16 +26,24 @@ class PlayerType extends AbstractType
         $builder->add('email', 'email', array(
             'label' => 'player.player_email'
         ));
-        $builder->add('type', 'choice', [
-            'choices' => ['базовый игрок', 'легионер', 'капитан'],
+        $builder->add('type', 'choice', array(
+            'choices'  => [
+                'базовый игрок' => 'базовый игрок',
+                'легионер'      => 'легионер',
+                'капитан'       => 'капитан',
+            ],
             'data' => 'базовый игрок',
-        ], array(
+            'required' => true,
             'label' => 'player.player_type'
         ));
         $builder->add('teams', 'entity', array(
             'label' => 'player.player_teams',
             'class' => 'AppBundle\Entity\Team',
-            'multiple' => true));
+        ));
+
+        $builder->add('submit', 'submit', array(
+            'label' => 'submit.submit_button'
+        ));
     }
 
     public function getName()

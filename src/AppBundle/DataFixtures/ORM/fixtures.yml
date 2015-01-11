@@ -4,9 +4,8 @@ AppBundle\Entity\Player:
     age: <dateTime()>
     email: <email()>
     type: <playerTypeName()>
-    team: @teams*
+    team: @team*
     created: <dateTime()>
-    deletedAt: <dateTime()>
 
 AppBundle\Entity\Team:
   teams{1..9}:
@@ -14,8 +13,8 @@ AppBundle\Entity\Team:
     type: <teamTypeName()>
     description: <realText()>
     rating: <numberBetween(0, 20000)>
-    totalPlayers: <numberBetween(1, 20)>
     player: @players*
+    result: @results*
 
 AppBundle\Entity\Tournament:
   tournaments{1..3}:
@@ -37,15 +36,11 @@ AppBundle\Entity\Event:
     text: <realText()>
     author: <firstName()>
     createdAt: <dateTime()>
-    updatedAt: <dateTime()>
     deletedAt: <dateTime()>
-    like: <numberBetween(1, 100)>
-    dislike: <numberBetween(1, 100)>
 
 AppBundle\Entity\Comment:
   comments{1..10}:
     author: <firstName()>
     text: <realText()>
-    type: <boolean(50)>
     createdAt: <dateTime()>
     event: @events*

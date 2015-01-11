@@ -7,10 +7,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Result
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ResultRepository")
+ * @ORM\Table(name="Result")
+ * @ORM\Entity()
  *
  */
 class Result
@@ -25,16 +24,14 @@ class Result
     private $id;
 
     /**
-     * @var
      * @Assert\NotBlank()
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Tournament", inversedBy="result", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Tournament", inversedBy="results", cascade={"persist"})
      */
     private $tournament;
 
     /**
-     * @var
      * @Assert\NotBlank()
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Team", mappedBy="result", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team", inversedBy="results", cascade={"persist"})
      */
     private $team;
 

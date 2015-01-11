@@ -2,17 +2,41 @@
 namespace AppBundle\Controller;
 
 use Symfony\Component\Form\Form;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template as Template;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-use AppBundle\Form\Type\EventType;
 use AppBundle\Entity\Event;
+use AppBundle\Form\Type\EventType;
+use AppBundle\Entity\Comment;
 use AppBundle\Form\Type\CommentType;
 
 class EventController extends Controller
 {
+    /**
+     * @Template()
+     * @param Request $request
+     * @return array
+     */
+    public function viewAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $events = $em->getRepository('AppBundle:Event')->findBy([], ['id' => 'DESC']);
+        $paginator = $this->get('knp_paginator');
+        $events = $paginator->paginate(
+            $events,
+            $request->query->get('page', 1),
+            3
+        );
+        $comment = new Comment();
+        $form = $this->createForm(new CommentType(), $comment);
+        return array(
+            'events' => $events,
+            'form'   => $form->createView()
+        );
+    }
+
     /**
      * @Template()
      *
@@ -30,38 +54,29 @@ class EventController extends Controller
             $em->persist($event);
             $em->flush();
 
-            return array($this->redirect($this->generateUrl('event', array(
-                'form' => $form->createView()))));
+            return ($this->get('router')->generate('event'));
         }
 
-        if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
-            throw new AccessDeniedException();
-        }
-    }
-
-    /**
-     * @Template()
-     *
-     */
-    public function viewAction()
-    {
-        $events = $this->getDoctrine()->getManager()->getRepository('AppBundle:Event')->findAll();
-
-        return ['events' => $events];
+        return array(
+            "form" => $form->createView(),
+        );
     }
 
     /**
      * @param $slug
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response|static
      *
      */
-    public function deleteAction($slug)
+    public function deleteAction($slug, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $event = $em->getRepository('AppBundle:Event')->findOneBy(['slug' => $slug]);
-        $this->get('request_handler');
+        $event = $em->getRepository('AppBundle:Event')->findOneBySlug($slug);
+
         $em->remove($event);
         $em->flush();
-        return JsonResponse::create(["code" => 200]);
+
+        $this->get('session')->getFlashBag()->add('success', 'Event was deleted successfully!');
+        return $this->redirect($this->generateUrl('app_event_view', ['locale' => $request->getLocale()]));
     }
 }

@@ -17,37 +17,32 @@ class Comment
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=200)
      * @Assert\NotBlank()
      */
-    protected $author;
+    private $author;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
      * @Assert\Length(min = 2, max = 255)
      */
-    protected $text;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    protected $type;
+    private $text;
 
     /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
-    protected $createdAt;
+    private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Event", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="Event", inversedBy="comment")
      * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
      */
-    protected $event;
+    private $event;
 
     /**
      * Get id
@@ -126,49 +121,6 @@ class Comment
     }
 
     /**
-     * Get type
-     *
-     * @return boolean
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * Set type
-     *
-     * @param boolean $type
-     * @return Comment
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-        return $this;
-    }
-
-    /**
-     * Add event
-     *
-     * @param \AppBundle\Entity\Event $event
-     * @return Comment
-     */
-    public function addEvent(\AppBundle\Entity\Event $event)
-    {
-        $this->event[] = $event;
-        return $this;
-    }
-    /**
-     * Remove event
-     *
-     * @param \AppBundle\Entity\Event $event
-     */
-    public function removeEvent(\AppBundle\Entity\Event $event)
-    {
-        $this->event->removeElement($event);
-    }
-
-    /**
      * Get event
      *
      * @return \Doctrine\Common\Collections\Collection
@@ -186,13 +138,6 @@ class Comment
      */
     public function setEvent(\AppBundle\Entity\Event $event = null)
     {
-        if ($this->type) {
-            $count = $event->getLike();
-            $event->setLike($count + 1);
-        } else {
-            $count = $event->getDislike();
-            $event->setDislike($count + 1);
-        }
         $this->event = $event;
         return $this;
     }

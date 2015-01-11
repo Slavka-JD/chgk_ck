@@ -51,18 +51,20 @@
                     {% endfor %}
                 </ul>
 
-                <div>
-                    <h3>{{ "comment.comment_body"|trans() }}:</h3>
+                {% if render_form %}
+                    <div>
+                        <h3>{{ "comment.comment_body"|trans() }}:</h3>
 
-                    <form id="comment_add" role="form" action="{{ path("app_comment_add", {"slug" : event.slug}) }}" method="post" >
-                        <div>{{ form_row(form.author) }}</div>
-                        <div>{{ form_row(form.text) }}</div>
-                        {{ form_rest(form) }}
-                        <div>
-                            <input type="submit" value="{{ "submit.submit_button"|trans() }}">
-                        </div>
-                    </form>
-                </div>
+                        <form id="comment_add" role="form" action="{{ path("app_comment_add", {"slug" : event.slug}) }}" method="post" >
+                            <div>{{ form_row(form.author) }}</div>
+                            <div>{{ form_row(form.text) }}</div>
+                            {{ form_rest(form) }}
+                            <div>
+                                <input type="submit" value="{{ "submit.submit_button"|trans() }}">
+                            </div>
+                        </form>
+                    </div>
+                {% endif %}
             </div>
             <br /><br /><br />
         {% endfor %}
@@ -70,9 +72,7 @@
     <div class="container">
         <div class="col-md-12">
             <p style="font-family:'Times New Roman', Times, serif; font-size: 25pt;">
-        <a href="{{ path('app_event_add') }}">Добавить новое событие</a>
-        {% block forms %}
-        {% endblock %}
-    </div>
+            <a href="{{ path('app_event_add') }}">Добавить новое событие</a>
+        </div>
     </div>
 {% endblock %}

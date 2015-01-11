@@ -79,8 +79,7 @@
         {
             $em = $this->getDoctrine()->getManager();
             $player = new Player();
-            $teams = $this->getAllTeams();
-            $form = $this->createForm(new PlayerType($teams), $player);
+            $form = $this->createForm(new PlayerType(), $player);
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $player = $form->getData();

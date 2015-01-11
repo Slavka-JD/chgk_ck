@@ -10,7 +10,7 @@ class TournamentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name', 'string', array(
+        $builder->add('name', 'text', array(
             'label' => 'tournament.tournament_name'
         ));
         $builder->add('description', 'text', array(
@@ -19,12 +19,15 @@ class TournamentType extends AbstractType
         $builder->add('playdate', 'date', array(
             'label' => 'tournament.tournament_playdate'
         ));
+        $builder->add('submit', 'submit', array(
+            'label' => 'submit.submit_button'
+        ));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Acme\TaskBundle\Entity\Tournament',
+            'data_class' => 'AppBundle\Entity\Tournament',
             'csrf_protection' => false,
         ));
     }

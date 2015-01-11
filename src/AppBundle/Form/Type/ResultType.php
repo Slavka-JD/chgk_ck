@@ -9,7 +9,7 @@ class ResultType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('teams', 'entity', array(
+        $builder->add('team', 'entity', array(
             'label' => 'player.player_teams',
             'class' => 'AppBundle\Entity\Team',
         ));
@@ -19,7 +19,7 @@ class ResultType extends AbstractType
         $builder->add('place', 'integer', array(
             'label' => 'result.result_place'
         ));
-        $builder->add('tournaments', 'entity', array(
+        $builder->add('tournament', 'entity', array(
             'label' => 'tournament.tournament_results',
             'class' => 'AppBundle\Entity\Tournament',
         ));

@@ -1,12 +1,15 @@
-{% extends 'AppBundle:Event:add.html.twig' %}
+{% extends ':default:layout.html.twig' %}
+{% trans_default_domain "messages" %}
 
-{% block forms %}
-    <p>Добавление нового события:</p>
-    <div class="col-md-12">
-        <form role="form" method="post">
-            {{ form_widget(form) }}
-        </form>
-        <br>
-        <a href="{{ path('app_event_view') }}">скрыть</a>
+{% block content %}
+    <div class="container">
+        <p>Добавление нового события:</p>
+        <div class="col-md-12">
+            <form role="form" method="post">
+                {{ form_widget(form) }}
+            </form>
+            <br>
+            <a href="{{ path('app_event_view') }}">скрыть</a>
+        </div>
     </div>
 {% endblock %}

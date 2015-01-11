@@ -8,7 +8,7 @@
             <ol>
                 {% for Tournament in Tournaments %}
                     <li>
-                        <h4>{{ Tournament.name }} - дата отыгрыша: {{ Tournament.playdate.format('Y-m-d H:i:s') }}</h4>
+                        <h4>{{ Tournament.name }} - дата отыгрыша: {{ Tournament.playdate.format('Y-m-d') }}</h4>
 
                         <p>{{ Tournament.description }}</p>
                         <ol>

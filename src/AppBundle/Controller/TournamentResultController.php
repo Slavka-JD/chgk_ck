@@ -43,13 +43,12 @@ class TournamentResultController extends Controller
 
     public function addTournamentAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
         $tournament = new Tournament();
-        $results = $this->getAllResults();
-        $form = $this->createForm(new TournamentType($results), $tournament);
+        $form = $this->createForm(new TournamentType(), $tournament);
         $form->handleRequest($request);
         if ($form->isValid()) {
             $tournament = $form->getData();
+            $em = $this->getDoctrine()->getManager();
             $em->persist($tournament);
             $em->flush();
 
@@ -76,12 +75,11 @@ class TournamentResultController extends Controller
 
     public function addResultAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
         $result = new Result();
-        $tournaments = $this->getAllTournaments();
-        $form = $this->createForm(new ResultType($tournaments), $result);
+        $form = $this->createForm(new ResultType(), $result);
         $form->handleRequest($request);
         if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
             $result = $form->getData();
             $em->persist($result);
             $em->flush();

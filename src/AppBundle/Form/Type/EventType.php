@@ -20,6 +20,9 @@ class EventType extends AbstractType
         $builder->add('text', 'textarea', array(
             'label' => 'event.event_body'
         ));
+        $builder->add('submit', 'submit', array(
+            'label' => 'submit.submit_button'
+        ));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

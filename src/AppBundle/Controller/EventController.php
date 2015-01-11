@@ -21,19 +21,24 @@ class EventController extends Controller
      */
     public function viewAction(Request $request)
     {
+        $slugExists = (bool) $request->get('slug');
+        $findBy = $slugExists ? 'slug' : 'id';
         $em = $this->getDoctrine()->getManager();
-        $events = $em->getRepository('AppBundle:Event')->findBy([], ['id' => 'DESC']);
+        $events = $em->getRepository('AppBundle:Event')->findBy([], [$findBy => 'DESC']);
         $paginator = $this->get('knp_paginator');
         $events = $paginator->paginate(
             $events,
             $request->query->get('page', 1),
-            1
+            $slugExists ? 1 : 100
         );
         $comment = new Comment();
         $form = $this->createForm(new CommentType(), $comment);
+
+
         return array(
             'events' => $events,
-            'form'   => $form->createView()
+            'form'   => $form->createView(),
+            'render_form' => $slugExists
         );
     }
 
@@ -54,11 +59,12 @@ class EventController extends Controller
             $em->persist($event);
             $em->flush();
 
-            return ($this->get('router')->generate('event'));
+            $this->get('session')->getFlashBag()->add('success', 'Event was added successfully!');
+            return $this->redirect($this->generateUrl('app_event_view', ['locale' => $request->getLocale()]));
         }
 
         return array(
-            "form" => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 

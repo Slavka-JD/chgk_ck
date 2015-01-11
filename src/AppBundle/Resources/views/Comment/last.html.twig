@@ -1,0 +1,42 @@
+{% extends ':default:layout.html.twig' %}
+{% trans_default_domain "messages" %}
+
+{% block title %}
+    Last comments
+{% endblock %}
+
+{% block content %}
+    <div class="comment-article">
+        <ul>
+            {% for comment in comments %}
+                <li>
+                    <div class="comment">
+                        <div class="info-block">
+                            <p>
+                                <b>{{ "event.event_author"|trans() }}:</b> {{ comment.author }}
+                                <br/>
+                                <b>{{ "event.event_created_at"|trans() }}
+                                    :</b> {{ comment.createdAt|date("d.m.Y H:i:s") }}
+                            </p>
+                        </div>
+                        <div class="text">
+                            <p>
+                                {{ comment.text }}
+                            </p>
+                        </div>
+                        <div class="link_to_article">
+                            <b>Catch that new! </b><a
+                                    href="{{ path("view_event", { "slug" : comment.event.slug}) }}">{{ comment.event.title }}</a>
+                        </div>
+                    </div>
+                </li>
+            {% else %}
+                <li>
+                    <h3>
+                        No comments...
+                    </h3>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

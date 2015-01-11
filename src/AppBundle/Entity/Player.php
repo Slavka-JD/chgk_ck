@@ -5,13 +5,13 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Entity\Team;
 
 /**
- * Player
  *
- * @ORM\Table()
+ * @ORM\Table(name="Player")
  * @ORM\Entity
- * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
+ *
  */
 class Player
 {
@@ -41,7 +41,7 @@ class Player
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
     private $email;
 
@@ -53,19 +53,16 @@ class Player
     private $type;
 
     /**
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Team", mappedBy="players", cascade={"persist"})
+     * @Assert\NotBlank()
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Team", inversedBy="players", cascade={"persist"})
      */
-    private $teams;
+    private $team;
+
     /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
     private $created;
-    /**
-     * @ORM\Column(name="deletedAt", type="datetime", nullable=true)
-     */
-    private $deletedAt;
 
     /**
      * Constructor
@@ -152,25 +149,36 @@ class Player
     }
 
     /**
-     *Set team
-     * @param Team $team
-     * @return Player
+     * Get team
+     *
+     * @return Team
      */
-    public function setTeam(Team $team)
+    public function getTeam()
     {
-        $team->setPlayer($this);
-        $this->teams[] = $team;
+        return $this->team;
     }
 
     /**
-     * Get teams
+     * Set team
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @param Team $team
+     * @return Player
      */
-    public function getTeams()
+    public function setTeam(Team $team = null)
     {
-        return $this->teams;
+        $this->team = $team;
+        return $this;
     }
+
+//    public function addTeam(Player $player)
+//    {
+//        $this->players->add($player);
+//    }
+//
+//    public function removeTeam(Player $player)
+//    {
+//        $this->players->remove($player);
+//    }
 
     public function __toString()
     {
@@ -218,28 +226,6 @@ class Player
     public function setCreated($created)
     {
         $this->created = $created;
-        return $this;
-    }
-
-    /**
-     * Get deletedAt
-     *
-     * @return \DateTime
-     */
-    public function getDeletedAt()
-    {
-        return $this->deletedAt;
-    }
-
-    /**
-     * Set deletedAt
-     *
-     * @param \DateTime $deletedAt
-     * @return Player
-     */
-    public function setDeletedAt($deletedAt)
-    {
-        $this->deletedAt = $deletedAt;
         return $this;
     }
 }

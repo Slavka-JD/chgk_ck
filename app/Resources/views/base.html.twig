@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{% block title %}{{ "navbar.navbar_name"|trans() }}{% endblock %}</title>
+
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}"/>
 </head>
@@ -21,31 +22,35 @@
         <ul class="nav navbar-nav">
             <li>
                 <div>
-                    <a class="navbar-brand"> {{ "navbar.navbar_homepage"|trans() }}</a>
+                    <a class="navbar-brand"
+                       href="{{ path('app_homepage') }}"> {{ "navbar.navbar_homepage"|trans() }}</a>
                 </div>
             </li>
 
             <li>
                 <div>
-                    <a class="navbar-brand"> {{ "navbar.navbar_teams"|trans() }}</a>
+                    <a class="navbar-brand" href="{{ path('app_team_view') }}"> {{ "navbar.navbar_teams"|trans() }}</a>
                 </div>
             </li>
 
             <li>
                 <div>
-                    <a class="navbar-brand"> {{ "navbar.navbar_tournaments"|trans() }}</a>
+                    <a class="navbar-brand"
+                       href="{{ path('app_tournament_view') }}"> {{ "navbar.navbar_tournaments"|trans() }}</a>
                 </div>
             </li>
 
             <li>
                 <div>
-                    <a class="navbar-brand"> {{ "navbar.navbar_events"|trans() }}</a>
+                    <a class="navbar-brand"
+                       href="{{ path('app_event_view') }}"> {{ "navbar.navbar_events"|trans() }}</a>
                 </div>
             </li>
 
             <li>
                 <div>
-                    <a class="navbar-brand" href=""> {{ "navbar.navbar_contacts"|trans() }}</a>
+                    <a class="navbar-brand"
+                       href="{{ path('app_contacts') }}"> {{ "navbar.navbar_contacts"|trans() }}</a>
                 </div>
             </li>
 
@@ -64,8 +69,26 @@
             </li>
         </ul>
     </nav>
-    {% block content %}{% endblock %}
 </div>
-{% block javascripts %}{% endblock %}</body>
 
+{% for key, flash in app.session.getFlashBag().all() %}
+    <div class="container {{ key }}">
+        {% for message in flash %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endfor %}
+
+{% block content %}{% endblock %}
+{% block javascripts %}{% endblock %}
+
+<div class="container">
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-footer">
+            <a class="navbar-brand">Copyright © 2015. Slavka-JD. Life is but a game </a>
+        </div>
+    </nav>
+</div>
+
+</body>
 </html>

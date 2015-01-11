@@ -1,9 +1,77 @@
 app:
-     resource: @AppBundle/Controller/
-     prefix:   /{_locale}/
-     defaults: { _locale: en }
+    resource: @AppBundle/Controller/
+    prefix:   /{_locale}/
+    defaults: { _locale: en }
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
 app_homepage:
-     path: /{_locale}
-     methods: [GET, POST]
-     defaults: { _controller: AppBundle:Default:index, _locale: en}
+    path: /{_locale}
+    methods: [GET, POST]
+    defaults: { _controller: AppBundle:Default:index, _locale: en }
+    requirements:
+        _locale: en|ua|ru
+    options:
+        expose: true
+
+app_event_add:
+    path: /{_locale}/event/add
+    methods: [GET, POST]
+    defaults: { _controller: AppBundle:Event:add }
+
+app_event_view:
+    path: /{_locale}/event/view
+    methods: [GET]
+    defaults: { _controller: AppBundle:Event:view }
+
+app_event_delete:
+    path: /event/{slug}/delete
+    methods: [GET]
+    defaults: { _controller: AppBundle:Event:delete }
+
+app_comment_add:
+    path: /comment/{slug}/add
+    methods: [POST]
+    defaults: { _controller: AppBundle:Comment:add }
+
+app_comment_last:
+    path: /{_locale}/comment/last/{count}
+    defaults: { _controller: AppBundle:Comment:last, count: 10 }
+    requirements:
+        count: \d+
+    methods: [GET]
+
+app_player_add:
+    path: /{_locale}/player/add
+    methods: [GET, POST]
+    defaults: { _controller: AppBundle:TeamPlayer:addPlayer }
+
+app_team_add:
+    path: /{_locale}/team/add
+    methods: [GET, POST]
+    defaults: { _controller: AppBundle:TeamPlayer:addTeam }
+
+app_team_view:
+    path: /{_locale}/team/view
+    methods: [GET]
+    defaults: { _controller: AppBundle:TeamPlayer:view }
+
+app_tournament_add:
+    path: /{_locale}/tournament/add
+    methods: [GET, POST]
+    defaults: { _controller: AppBundle:TournamentResult:addTournament }
+
+app_tournament_view:
+    path: /{_locale}/tournament/view
+    methods: [GET, POST]
+    defaults: { _controller: AppBundle:TournamentResult:view }
+
+app_result_add:
+    path: /{_locale}/result/add
+    methods: [GET, POST]
+    defaults: { _controller: AppBundle:TournamentResult:addResult }
+
+app_contacts:
+    path: /{_locale}/contacts
+    defaults: { _controller: AppBundle:Contact:index, _locale: en }

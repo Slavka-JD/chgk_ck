@@ -17,32 +17,32 @@ class Comment
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=200)
      * @Assert\NotBlank()
      */
-    protected $author;
+    private $author;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
      * @Assert\Length(min = 2, max = 255)
      */
-    protected $text;
+    private $text;
 
     /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
-    protected $createdAt;
+    private $createdAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="Event", inversedBy="comment")
      * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
      */
-    protected $event;
+    private $event;
 
     /**
      * Get id
@@ -123,7 +123,7 @@ class Comment
     /**
      * Get event
      *
-     * @return \AppBundle\Entity\Event
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getEvent()
     {
@@ -133,7 +133,7 @@ class Comment
     /**
      * Set event
      *
-     * @param  \AppBundle\Entity\Event $event
+     * @param \AppBundle\Entity\Event $event
      * @return Comment
      */
     public function setEvent(\AppBundle\Entity\Event $event = null)

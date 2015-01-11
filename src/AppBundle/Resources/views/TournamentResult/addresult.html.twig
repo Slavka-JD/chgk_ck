@@ -1,0 +1,12 @@
+{% extends 'AppBundle:TournamentResult:tournamentresult.html.twig' %}
+
+{% block forms %}
+    <p>Добавление результата:</p>
+    <div class="col-md-12">
+        <form role="form" method="post">
+            {{ form_widget(form) }}
+        </form>
+        <br>
+        <a href="{{ path('app_tournament_view') }}">скрыть</a>
+    </div>
+{% endblock %}

@@ -5,3 +5,47 @@ navbar:
     navbar_tournaments: "Tournaments"
     navbar_events: "Events"
     navbar_contacts: "Contacts"
+
+title:
+    title_brand: "Cherkassy club of intellectual games"
+    title_text: "is the Club of intellectual game show well-known in Russian-language media and other CIS states since the mid-1970s. Today it is produced for television by TV Igra on the Russian Channel One and also exists as a competitive game played in clubs organized by the World Association of Clubs. Over 21 000 teams worldwide play sport version of game, based on the TV show."
+
+comment:
+    comment_author: "Author"
+    comment_body: "Enter your comment here"
+
+event:
+    event_title: "Title"
+    event_author: "Author"
+    event_body: "Describe your event here"
+    event_delete_message: "Delete"
+
+player:
+    player_name: "Enter the player's full name"
+    player_age: "Enter the player's age"
+    player_email: "Enter the player's email"
+    player_type: "Choose the player's basic role"
+    player_teams: "Enter the player's team(s)"
+
+team:
+    team_name: "Team's name"
+    team_type: "Choose the team's type"
+    team_description: "Describe the team here"
+    team_rating: "Enter the team's rating"
+
+result:
+    result_points: "Enter the team's points"
+    result_place: "Enter the team's place"
+
+tournament:
+    tournament_name: "Tournament's name"
+    tournament_description: "Describe the tournament here"
+    tournament_playdate: "Enter the tournament's playdate"
+    tournament_results: "Add the tournament's results"
+
+submit:
+    submit_button: "Send"
+
+contacts:
+    contacts_title: "Contact us!"
+    contacts_email: "Keep complaining:<<<<<="

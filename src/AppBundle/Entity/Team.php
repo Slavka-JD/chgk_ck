@@ -4,15 +4,13 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Team
  *
- * @ORM\Table()
+ * @ORM\Table(name="Team")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\TeamRepository")
- * @UniqueEntity("name")
+ *
  */
 class Team
 {
@@ -29,7 +27,7 @@ class Team
      * @var string
      * @Assert\NotBlank()
      * @Assert\Length(min = 2, max = 30)
-     * @ORM\Column(name="name", type="string", length=255, unique=true)
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
@@ -56,31 +54,32 @@ class Team
     /**
      * @var integer
      * @Assert\NotBlank()
-     * @Assert\Length(min = 2, max = 10)
+     * @Assert\Length(min = 2, max = 20000)
      * @ORM\Column(name="number", type="integer")
      */
     private $rating;
 
     /**
-     * @var integer
+     * @var
      *
-     * @ORM\Column(name="totalclasses", type="integer")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Player", mappedBy="team", cascade={"persist"})
      */
-    private $totalplayers;
+    private $players;
 
     /**
      * @var
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Player", mappedBy="teams", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Result", mappedBy="team", cascade={"persist"})
      */
-    private $players;
+    private $results;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->teams = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->players = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->results = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -160,28 +159,6 @@ class Team
     }
 
     /**
-     * Get totalplayers
-     *
-     * @return integer
-     */
-    public function getTotalplayers()
-    {
-        return $this->totalplayers;
-    }
-
-    /**
-     * Set totalplayers
-     *
-     * @param integer $totalplayers
-     * @return Team
-     */
-    public function setTotalplayers($totalplayers)
-    {
-        $this->totalplayers = $totalplayers;
-        return $this;
-    }
-
-    /**
      * Set Player
      * @param Player $player
      * @return Team
@@ -199,6 +176,16 @@ class Team
     public function getPlayers()
     {
         return $this->players;
+    }
+
+    public function addPlayer(Player $player)
+    {
+        $this->players->add($player);
+    }
+
+    public function removePlayer(Result $player)
+    {
+        $this->players->remove($player);
     }
 
     /**
@@ -221,6 +208,36 @@ class Team
     {
         $this->slug = $slug;
         return $this;
+    }
+
+    /**
+     * Set Result
+     * @param Result $result
+     * @return Team
+     */
+    public function setResult(Result $result)
+    {
+        $this->results[] = $result;
+    }
+
+    /**
+     * Get results
+     *
+     * @return array
+     */
+    public function getResults()
+    {
+        return $this->results;
+    }
+
+    public function addResult(Result $result)
+    {
+        $this->results->add($result);
+    }
+
+    public function removeResult(Result $result)
+    {
+        $this->results->remove($result);
     }
 
     public function __toString()

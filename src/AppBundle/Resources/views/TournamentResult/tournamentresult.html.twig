@@ -1,0 +1,37 @@
+{% extends ':default:layout.html.twig' %}
+
+{% block content %}
+    {{ parent() }}
+    <div id="wrapper" class="container">
+        <div class="col-md-12">
+            <h3>Список турниров:</h3>
+            <ol>
+                {% for Tournament in Tournaments %}
+                    <li>
+                        <h4>{{ Tournament.name }} - дата отыгрыша: {{ Tournament.playdate.format('Y-m-d H:i:s') }}</h4>
+
+                        <p>{{ Tournament.description }}</p>
+                        <ol>
+                            {% for Result in Tournament.Results %}
+                                <li>
+                                    {{ Result.team }} - баллы: {{ Result.points }} и место: {{ Result.place }}
+                                </li>
+                            {% endfor %}
+                        </ol>
+                    </li><br>
+                {% endfor %}
+            </ol>
+        </div>
+
+    <div class="container">
+        <div class="col-md-12">
+            <p style="font-family:'Times New Roman', Times, serif; font-size: 25pt;">
+            <a href="{{ path('app_result_add') }}">Добавить результат</a>
+                <br/>
+            <a href="{{ path('app_tournament_add') }}">Добавить турнир</a>
+            {% block forms %}
+            {% endblock %}
+        </div>
+
+    </div>
+{% endblock %}

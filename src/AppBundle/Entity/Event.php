@@ -7,10 +7,12 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ *
+ * @ORM\Table(name="Event")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EventRepository")
- * @ORM\Table(name="event")
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  * @ORM\HasLifecycleCallbacks()
+ *
  */
 class Event
 {
@@ -19,54 +21,62 @@ class Event
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=150)
      * @Assert\NotBlank()
      * @Assert\Length(min = 2, max = 50)
      */
-    protected $title;
+    private $title;
 
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
      *
      */
-    protected $text;
+    private $text;
 
     /**
      * @ORM\Column(type="string", length=200, nullable=true)
      */
-    protected $author;
+    private $author;
 
     /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime", name="createdAt")
      */
-    protected $createdAt;
-
-    /**
-     * @Gedmo\Timestampable(on="update")
-     * @ORM\Column(type="datetime", nullable=true, name="updatedAt")
-     */
-    protected $updatedAt;
+    private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true, name="deletedAt")
      */
-    protected $deletedAt;
+    private $deletedAt;
 
     /**
      * @Gedmo\Slug(fields={"title"})
-     * @ORM\Column(type="string", length=128, unique=true)
+     * @ORM\Column(type="string", length=255, unique=true )
      */
-    protected $slugPost;
+    private $slug;
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="post", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="event", orphanRemoval=true)
      */
-    protected $comment;
+    private $comment;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", name="`like`", nullable=true)
+     */
+    private $like;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $dislike;
 
     /**
      * Constructor
@@ -153,6 +163,50 @@ class Event
     }
 
     /**
+     * Get like
+     *
+     * @return integer
+     */
+    public function getLike()
+    {
+        return $this->like;
+    }
+
+    /**
+     * Set like
+     *
+     * @param integer $like
+     * @return Event
+     */
+    public function setLike($like)
+    {
+        $this->like = $like;
+        return $this;
+    }
+
+    /**
+     * Get dislike
+     *
+     * @return integer
+     */
+    public function getDislike()
+    {
+        return $this->dislike;
+    }
+
+    /**
+     * Set dislike
+     *
+     * @param integer $dislike
+     * @return Event
+     */
+    public function setDislike($dislike)
+    {
+        $this->dislike = $dislike;
+        return $this;
+    }
+
+    /**
      * Get createdAt
      *
      * @return \DateTime
@@ -172,24 +226,6 @@ class Event
     {
         $this->createdAt = $createdAt;
         return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function setUpdatedAt()
-    {
-        $this->updatedAt = new \DateTime();
     }
 
     /**
@@ -215,31 +251,31 @@ class Event
     }
 
     /**
-     * Get slugPost
+     * Get slug
      *
      * @return string
      */
-    public function getSlugPost()
+    public function getSlug()
     {
-        return $this->slugPost;
+        return $this->slug;
     }
 
     /**
-     * Set slugPost
+     * Set slug
      *
-     * @param  string $slugPost
+     * @param  string $slug
      * @return Event
      */
-    public function setSlugPost($slugPost)
+    public function setSlug($slug)
     {
-        $this->slugPost = $slugPost;
+        $this->slug = $slug;
         return $this;
     }
 
     /**
-     * Add comment
+     * Add Comment
      *
-     * @param  \AppBundle\Entity\Comment $comment
+     * @param \AppBundle\Entity\Comment $comment
      * @return Event
      */
     public function addComment(\AppBundle\Entity\Comment $comment)
@@ -249,7 +285,7 @@ class Event
     }
 
     /**
-     * Remove comment
+     * Remove Comment
      *
      * @param \AppBundle\Entity\Comment $comment
      */
@@ -259,7 +295,7 @@ class Event
     }
 
     /**
-     * Get comment
+     * Get Comment
      *
      * @return \Doctrine\Common\Collections\Collection
      */

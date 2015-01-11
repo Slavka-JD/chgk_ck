@@ -1,0 +1,33 @@
+{% extends ":default:layout.html.twig" %}
+{% trans_default_domain "messages" %}
+
+ {% block content %}
+
+     <div class="container">
+         <div class="row">
+             <div class="col-md-4">
+                 <img src="{{ asset('images/owlpost.jpg') }}" alt="Contact us!">
+             </div>
+
+             <div class="col-md-7 col-md-offset-1">
+                 <div class="row">
+                     <h2 style="font-family: Verdana, Arial, Helvetica, sans-serif; font-style: initial; font-size: 27pt;">
+                         {{ "contacts.contacts_title"|trans() }} </h2>
+
+                     <p style="font-family:'Times New Roman', Times, serif; font-size: 18pt;">
+                         Руководитель клуба - Зингельшухер Ян Абрамович<br>
+                         Что? Где? Когда? - Черкассы<br>
+                         +38097 2681869<br>
+                         chgkck@gmail.com</p>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+     <div class="container">
+         <p style="font-family:'Times New Roman', Times, serif; font-size: 25pt;">
+             <a href="mailto:miledi777@ukr.net"> {{ "contacts.contacts_email"|trans() }} </a>
+         </p>
+     </div>
+
+ {% endblock %}

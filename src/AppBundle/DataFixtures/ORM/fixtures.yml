@@ -1,0 +1,46 @@
+AppBundle\Entity\Player:
+  players{1..18}:
+    name:  <playerName()>
+    age: <dateTime()>
+    email: <email()>
+    type: <playerTypeName()>
+    team: @team*
+    created: <dateTime()>
+
+AppBundle\Entity\Team:
+  teams{1..9}:
+    name (unique): <teamName()>
+    type: <teamTypeName()>
+    description: <realText()>
+    rating: <numberBetween(0, 20000)>
+    player: @players*
+    result: @results*
+
+AppBundle\Entity\Tournament:
+  tournaments{1..3}:
+    name: <tournamentName()>
+    description: <realText()>
+    playdate: <dateTime()>
+    result: @results*
+
+AppBundle\Entity\Result:
+  results{1..9}:
+    tournament: @tournament*
+    team: @team*
+    points: <numberBetween(0, 45)>
+    place: <numberBetween(1, 10)>
+
+AppBundle\Entity\Event:
+  events{1..5}:
+    title: <eventTitle()>
+    text: <realText()>
+    author: <firstName()>
+    createdAt: <dateTime()>
+    deletedAt: <dateTime()>
+
+AppBundle\Entity\Comment:
+  comments{1..10}:
+    author: <firstName()>
+    text: <realText()>
+    createdAt: <dateTime()>
+    event: @events*

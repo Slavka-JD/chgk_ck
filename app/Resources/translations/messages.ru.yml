@@ -18,6 +18,7 @@ event:
     event_title: "Название новости"
     event_author: "Автор"
     event_body: "Опишите новость"
+    event_eventdate: "Дата события (если применимо)"
     event_delete_message: "Удалить"
 
 player:

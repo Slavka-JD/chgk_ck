@@ -20,6 +20,9 @@ class EventType extends AbstractType
         $builder->add('text', 'textarea', array(
             'label' => 'event.event_body'
         ));
+        $builder->add('eventdate', 'date', array(
+            'label' => 'event.event_eventdate'
+        ));
         $builder->add('submit', 'submit', array(
             'label' => 'submit.submit_button'
         ));

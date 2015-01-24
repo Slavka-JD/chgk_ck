@@ -43,6 +43,13 @@ class Event
     private $author;
 
     /**
+     * @var /Datetime
+     *
+     * @ORM\Column(name="eventdate", type="date", nullable=true)
+     */
+    private $eventdate;
+
+    /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime", name="createdAt")
      */
@@ -63,20 +70,6 @@ class Event
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="event", orphanRemoval=true)
      */
     private $comment;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer", name="`like`", nullable=true)
-     */
-    private $like;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $dislike;
 
     /**
      * Constructor
@@ -163,46 +156,24 @@ class Event
     }
 
     /**
-     * Get like
+     * Get eventdate
      *
-     * @return integer
+     * @return string
      */
-    public function getLike()
+    public function getEventdate()
     {
-        return $this->like;
+        return $this->eventdate;
     }
 
     /**
-     * Set like
+     * Set eventdate
      *
-     * @param integer $like
+     * @param string $eventdate
      * @return Event
      */
-    public function setLike($like)
+    public function setEventdate($eventdate)
     {
-        $this->like = $like;
-        return $this;
-    }
-
-    /**
-     * Get dislike
-     *
-     * @return integer
-     */
-    public function getDislike()
-    {
-        return $this->dislike;
-    }
-
-    /**
-     * Set dislike
-     *
-     * @param integer $dislike
-     * @return Event
-     */
-    public function setDislike($dislike)
-    {
-        $this->dislike = $dislike;
+        $this->eventdate = $eventdate;
         return $this;
     }
 
